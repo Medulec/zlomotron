@@ -1,0 +1,138 @@
+<link rel="stylesheet" href="/css/inventory.css">
+
+<div id="content-wrapper" class="inventory-page">
+<aside>
+    <div class="box">
+        <div class="box-header">
+            <span>🔍 FILTROWANIE</span>
+        </div>
+        <div class="box-content">
+            <label>Szukaj nazwy</label>
+            <input type="text" id="filter-search" placeholder="np. GTX 1060...">
+
+            <label>Kategoria</label>
+            <select id="filter-category">
+                <option value="">-- Wszystkie --</option>
+                <option value="mobo">MOBO</option>
+                <option value="cpu">CPU</option>
+                <option value="gpu">GPU</option>
+                <option value="ram">RAM</option>
+                <option value="psu">PSU</option>
+                <option value="case">CASE</option>
+            </select>
+
+            <label>Status</label>
+            <select id="filter-status">
+                <option value="">-- Wszystkie --</option>
+                <option value="available">Dostępne</option>
+                <option value="reserved">Zarezerwowane</option>
+                <option value="sold">Sprzedane</option>
+            </select>
+
+            <label>Cena od-do</label>
+            <div style="display: flex; gap: 6px;">
+                <input type="number" id="filter-price-min" placeholder="MIN" style="width: 50%;">
+                <input type="number" id="filter-price-max" placeholder="MAX" style="width: 50%;">
+            </div>
+
+            <div style="margin-top: 10px; display: flex; gap: 6px;">
+                <button class="btn" id="btn-clear-filters" style="flex: 1; background: #222;">RESETUJ</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="box">
+        <div class="box-header">
+            <span>📊 STATYSTYKI</span>
+        </div>
+        <div class="box-content">
+            <div class="stat-row">
+                <span class="stat-label">Wszystkie części</span>
+                <span class="stat-value" id="stat-total">0</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-label">Dostępne</span>
+                <span class="stat-value" id="stat-available" style="color: #76ff03;">0</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-label">Zarezerwowane</span>
+                <span class="stat-value" id="stat-reserved" style="color: #ff9800;">0</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-label">Sprzedane</span>
+                <span class="stat-value" id="stat-sold" style="color: #f44336;">0</span>
+            </div>
+            <div class="stat-row" style="border-top: 2px solid #5d4037; margin-top: 6px; padding-top: 8px;">
+                <span class="stat-label">Łączna wartość</span>
+                <span class="stat-value" id="stat-total-price" style="color: #ffcc80;">0 zł</span>
+            </div>
+            <div class="stat-row">
+                <span class="stat-label">Wart. dostępnych</span>
+                <span class="stat-value" id="stat-available-price" style="color: #76ff03;">0 zł</span>
+            </div>
+        </div>
+    </div>
+</aside>
+
+    <main>
+        <div class="box" style="height: max-content; overflow: hidden;">
+            <div class="box-header">
+                <span>DODAJ Z KATEGORII</span>
+            </div>
+            <div class="box-content">
+                <div class="button-group-inventory">
+                    <button class="btn-add-stock btn" data-type="mobo">MOBO</button>
+                    <button class="btn-add-stock btn" data-type="cpu">CPU</button>
+                    <button class="btn-add-stock btn" data-type="gpu">GPU</button>
+                    <button class="btn-add-stock btn" data-type="ram">RAM</button>
+                    <button class="btn-add-stock btn" data-type="psu">PSU</button>
+                    <button class="btn-add-stock btn" data-type="case">CASE</button>
+                </div>            
+            </div>
+        </div>
+
+        <div class="box inventory-table-box">
+            <div class="box-header">
+                <span>MAGAZYN CZĘŚCI</span>
+                <span class="parts-count">Wyników: <span id="results-count">0</span></span>
+            </div>
+            <div class="box-content table-wrapper">
+                <table class="inventory-table" id="parts-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>NAZWA</th>
+                            <th>KATEGORIA</th>
+                            <th>CENA</th>
+                            <th>ILOŚĆ</th>
+                            <th>STATUS</th>
+                            <th>AKCJE</th>
+                        </tr>
+                    </thead>
+                    <tbody id="parts-tbody">
+
+                    </tbody>
+                </table>
+
+                <div id="no-results" class="no-results" style="display: none;">
+                    <span class="blink">⚠</span> BRAK WYNIKÓW <span class="blink">⚠</span>
+                </div>
+
+                <div id="loading" class="loading">
+                    <span class="blink">▓▓▓</span> ŁADOWANIE... <span class="blink">▓▓▓</span>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<!-- HIDDEN MODAL -->
+<div id="component-modal" class="modal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-window">
+        <span class="modal-close">&times;</span>
+        <div id="modal-body"></div>
+    </div>
+</div>
+
+<script src="/js/inventory.js"></script>

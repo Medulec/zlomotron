@@ -1,0 +1,1540 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZŁOMOTRON.PL — UI KIT</title>
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   ZŁOMOTRON.PL — UI KITCHEN SINK
+   ============================================================ */
+
+:root {
+    --bg-body:          #050302;
+    --bg-deep:          #0a0a0a;
+    --bg-container:     #111111;
+    --bg-content:       #151515;
+    --bg-nav:           #1a1a1a;
+    --bg-box:           #1c1c1c;
+    --bg-element:       #222222;
+    --bg-button:        #2a2a2a;
+    --bg-button-hover:  #333333;
+    --bg-button-active: #3a3a3a;
+    --wood-900:         #0d0603;
+    --wood-850:         #1a0a00;
+    --wood-800:         #1a0f08;
+    --wood-750:         #2a1a10;
+    --wood-700:         #2d1810;
+    --wood-650:         #2e1c15;
+    --wood-600:         #3e2723;
+    --wood-500:         #4e342e;
+    --wood-400:         #5d4037;
+    --wood-350:         #5c2e0a;
+    --wood-300:         #5c3d2a;
+    --wood-250:         #5c4a3a;
+    --wood-200:         #6d4c41;
+    --wood-150:         #6d4e3b;
+    --wood-100:         #8b4513;
+    --wood-050:         #8b7355;
+    --accent:           #ff6f00;
+    --accent-bright:    #ff9800;
+    --accent-warm:      #ff8800;
+    --accent-deep:      #d84315;
+    --accent-text:      #ffcc80;
+    --accent-link:      #ffab91;
+    --accent-pale:      #ffe0b2;
+    --accent-shadow:    #331a00;
+    --accent-dark:      #552200;
+    --green-neon:       #76ff03;
+    --green-terminal:   #00ff00;
+    --green-success-bg: #0a1a00;
+    --green-status:     #81c784;
+    --green-status-lt:  #a5d6a7;
+    --green-dark:       #1b5e20;
+    --green-mid:        #2e7d32;
+    --green-border:     #4caf50;
+    --green-dot:        #009900;
+    --red-bright:       #ff0000;
+    --red-dark:         #8b0000;
+    --red-darker:       #aa0000;
+    --red-deep:         #b71c1c;
+    --red-mid:          #c62828;
+    --red-error-bg:     #330000;
+    --red-error-bg-dk:  #1a0000;
+    --red-status:       #e57373;
+    --red-light:        #ffcdd2;
+    --red-border:       #cc0000;
+    --red-action:       #e53935;
+    --red-action-lt:    #ef5350;
+    --red-sold:         #f44336;
+    --blue-dark:        #1a237e;
+    --blue-mid:         #3949ab;
+    --blue-light:       #9fa8da;
+    --blue-action:      #1565c0;
+    --blue-action-lt:   #42a5f5;
+    --purple-dark:      #4a148c;
+    --purple-mid:       #8e24aa;
+    --purple-light:     #e1bee7;
+    --teal-dark:        #004d40;
+    --teal-mid:         #00897b;
+    --teal-light:       #b2dfdb;
+    --orange-dark:      #e65100;
+    --orange-mid:       #fb8c00;
+    --orange-border:    #ff9800;
+    --gpu-border:       #43a047;
+    --gpu-text:         #c8e6c9;
+    --text-white:       #ffffff;
+    --text-bright:      #cccccc;
+    --text-body:        #bbbbbb;
+    --text-medium:      #aaaaaa;
+    --text-base:        #999999;
+    --text-muted:       #888888;
+    --text-dim:         #777777;
+    --text-faint:       #666666;
+    --text-ghost:       #555555;
+    --text-hidden:      #444444;
+    --border-light:     #555555;
+    --border-mid:       #444444;
+    --border-dark:      #333333;
+    --border-darker:    #2a2a2a;
+    --border-faint:     #222222;
+    --shadow:           #000000;
+    --black:            #000000;
+    --white:            #ffffff;
+    --yellow:           #ffff00;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: Verdana, Tahoma, Arial, sans-serif;
+    font-size: 11px;
+    color: var(--text-base);
+    background-color: var(--bg-body);
+    background-image:
+        radial-gradient(circle, transparent 60%, var(--black) 100%),
+        linear-gradient(0deg, rgba(100,60,40,0.2) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(100,60,40,0.2) 1px, transparent 1px);
+    background-size: 100% 100%, 25px 25px, 25px 25px;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+a { color: var(--accent-link); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--text-white); text-decoration: underline; }
+
+/* Animations */
+.blink { animation: oldschool-blink 1s steps(1) infinite; }
+@keyframes oldschool-blink { 0%,100%{visibility:visible} 50%{visibility:hidden} }
+.rainbow-text { animation: rainbow-shift 2s linear infinite; }
+@keyframes rainbow-shift { 0%{color:var(--red-bright)} 17%{color:var(--accent-warm)} 33%{color:var(--yellow)} 50%{color:var(--green-terminal)} 67%{color:#0088ff} 83%{color:#ff00ff} 100%{color:var(--red-bright)} }
+.fire-text { background:linear-gradient(180deg,var(--red-bright),#ff6600,var(--yellow)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; font-weight:bold; }
+.rainbow-border { animation: border-rainbow 3s linear infinite; }
+@keyframes border-rainbow { 0%{border-color:var(--red-bright)} 17%{border-color:var(--accent-warm)} 33%{border-color:var(--yellow)} 50%{border-color:var(--green-terminal)} 67%{border-color:#0088ff} 83%{border-color:#ff00ff} 100%{border-color:var(--red-bright)} }
+
+/* Box */
+.box { background:var(--bg-box); margin-bottom:12px; overflow:hidden; border:3px double var(--wood-400); outline:2px solid var(--wood-750); outline-offset:0; box-shadow:2px 2px 0 var(--shadow), inset 1px 1px 0 var(--border-dark); }
+.box-header { background:var(--wood-600); color:var(--accent-text); font-weight:bold; font-size:10px; padding:5px 8px; text-transform:uppercase; letter-spacing:1px; border-bottom:2px solid var(--wood-400); display:flex; justify-content:space-between; align-items:center; text-shadow:1px 1px 0 var(--shadow); font-family:Verdana,Tahoma,sans-serif; }
+.box-header-icon { font-size:11px; margin-right:6px; }
+.box-content { padding:10px; }
+
+/* Nav tabs */
+.nav-tab { background:var(--bg-button); color:var(--text-medium); font-weight:bold; font-size:10px; padding:6px 14px; cursor:pointer; text-transform:uppercase; letter-spacing:1px; text-shadow:1px 1px 0 var(--shadow); font-family:Tahoma,Verdana,sans-serif; border:3px double var(--border-light); outline:2px solid var(--bg-container); outline-offset:0; box-shadow:inset 1px 1px 0 var(--border-mid), inset -1px -1px 0 var(--bg-container), 2px 2px 0 var(--shadow); display:inline-block; }
+.nav-tab:hover { color:var(--accent); background:var(--bg-button-hover); border-color:var(--text-dim); }
+.nav-tab.active { background:var(--bg-container); color:var(--accent); border:3px double var(--accent); outline-color:var(--accent-shadow); box-shadow:inset 1px 1px 0 var(--accent-dark), inset -1px -1px 0 var(--shadow), 2px 2px 0 var(--shadow); }
+.nav-tab:active { box-shadow:inset 2px 2px 0 var(--shadow), inset -1px -1px 0 var(--bg-button-hover); transform:translate(1px,1px); }
+
+/* Buttons */
+.btn { background:var(--bg-button-active); color:var(--accent-text); font-size:10px; font-weight:bold; padding:4px 12px; cursor:pointer; font-family:Tahoma,Verdana,sans-serif; text-transform:uppercase; border:2px outset var(--border-light); box-shadow:1px 1px 0 var(--shadow); display:inline-block; }
+.btn:hover { background:var(--border-mid); color:var(--text-white); }
+.btn:active { border-style:inset; box-shadow:none; transform:translate(1px,1px); }
+.btn-small { font-size:9px; padding:3px 10px; }
+.btn-action { background:var(--bg-button); color:var(--text-medium); font-size:9px; padding:3px 8px; margin:0 2px; cursor:pointer; font-family:Tahoma,sans-serif; border:2px outset var(--border-light); display:inline-block; }
+.btn-action:hover { background:var(--bg-button-active); color:var(--text-white); }
+.btn-action:active { border-style:inset; transform:translate(1px,1px); }
+.btn-action.edit:hover { background:var(--blue-action); border-color:var(--blue-action-lt); }
+.btn-action.delete:hover { background:var(--red-mid); border-color:var(--red-action-lt); }
+.btn-calculate { width:100%; background:var(--red-dark); border:2px outset var(--red-bright); color:var(--text-white); font-family:Tahoma,Verdana,sans-serif; font-size:11px; font-weight:bold; padding:10px; cursor:pointer; text-transform:uppercase; letter-spacing:1px; }
+.btn-calculate:hover { background:var(--red-darker); }
+.btn-calculate:active { border-style:inset; transform:translate(1px,1px); }
+.button-retro-adminhub { background:linear-gradient(180deg,var(--accent-warm),#ff6600); color:var(--text-white); font-size:10px; font-weight:bold; padding:8px 16px; cursor:pointer; font-family:Tahoma,Verdana,monospace; text-align:center; text-transform:uppercase; vertical-align:middle; letter-spacing:1px; border:none; position:relative; box-shadow:inset 2px 2px 0 rgba(255,200,100,0.8), inset -2px -2px 0 rgba(139,40,0,0.8), 2px 2px 0 var(--shadow); display:inline-block; }
+.button-retro-adminhub:hover { background:linear-gradient(180deg,var(--wood-100),#864b17); }
+.button-retro-adminhub:active { box-shadow:inset -2px -2px 0 rgba(255,200,100,0.6), inset 2px 2px 0 rgba(80,20,0,0.9), 0 0 0 var(--shadow); transform:translate(2px,2px); }
+.button-group { display:flex; gap:10px; margin-top:10px; justify-content:center; }
+
+/* Badges */
+.badge-new { background:var(--red-bright); color:var(--text-white); font-size:8px; font-weight:bold; padding:1px 4px; margin-left:6px; text-transform:uppercase; border:1px solid var(--red-darker); display:inline-block; }
+.category-badge { display:inline-block; padding:2px 6px; font-size:8px; font-weight:bold; border:1px solid; }
+.category-badge.mobo { background:var(--blue-dark); border-color:var(--blue-mid); color:var(--blue-light); }
+.category-badge.cpu { background:var(--red-deep); border-color:var(--red-action); color:var(--red-light); }
+.category-badge.gpu { background:var(--green-dark); border-color:var(--gpu-border); color:var(--gpu-text); }
+.category-badge.ram { background:var(--orange-dark); border-color:var(--orange-mid); color:var(--accent-pale); }
+.category-badge.psu { background:var(--purple-dark); border-color:var(--purple-mid); color:var(--purple-light); }
+.category-badge.case { background:var(--teal-dark); border-color:var(--teal-mid); color:var(--teal-light); }
+.status-badge { display:inline-block; padding:3px 8px; font-size:8px; font-weight:bold; text-transform:uppercase; letter-spacing:1px; border:2px outset; }
+.status-badge.available { background:var(--green-dark); border-color:var(--green-border); color:var(--green-status-lt); }
+.status-badge.reserved { background:var(--orange-dark); border-color:var(--orange-border); color:var(--accent-pale); }
+.status-badge.sold { background:var(--red-deep); border-color:var(--red-sold); color:var(--red-light); }
+.status-ok { color:var(--green-status); }
+.status-warn { color:var(--accent-text); }
+.status-bad { color:var(--red-status); }
+
+/* Text styles */
+.part-name { color:var(--accent-text); font-weight:bold; }
+.stock-count { color:var(--green-neon); font-family:'VT323',monospace; font-size:14px; text-shadow:0 0 5px rgba(118,255,3,0.5); }
+.price-special { color:var(--green-neon); font-style:italic; }
+
+/* Counter */
+.hit-counter-fancy { background:var(--black); border:3px ridge var(--border-mid); padding:8px; text-align:center; }
+.counter-display { text-align:center; padding:10px; background:var(--bg-deep); }
+.counter-label { font-size:9px; color:var(--text-muted); text-transform:uppercase; letter-spacing:2px; margin-bottom:8px; }
+.counter-digits { display:inline-flex; gap:2px; background:var(--black); padding:6px 10px; border:2px inset var(--border-mid); }
+.counter-digit { background:var(--bg-deep); border:1px solid var(--border-dark); color:var(--red-bright); font-family:'VT323','Courier New',monospace; font-size:24px; width:20px; height:30px; display:flex; align-items:center; justify-content:center; }
+.counter-since { font-size:9px; color:var(--text-ghost); margin-top:8px; }
+
+/* Marquee */
+.marquee-container { width:100%; background:linear-gradient(180deg,var(--wood-650),var(--wood-800)); border-top:1px solid var(--wood-400); padding:5px 0; }
+.marquee-container marquee { font-family:'VT323',monospace; font-size:15px; color:var(--accent-link); }
+.news-separator { color:var(--accent); margin:0 10px; }
+
+/* Stats bar */
+.stats-bar { background:var(--bg-nav); border-bottom:1px solid var(--border-dark); border-top:1px solid var(--border-dark); padding:5px 12px; display:flex; justify-content:space-between; align-items:center; font-size:10px; }
+.online-indicator { display:flex; align-items:center; gap:6px; }
+.online-dot { width:8px; height:8px; background:var(--green-terminal); border:1px solid var(--green-dot); display:inline-block; }
+
+/* Micro banners */
+.micro-banners { display:flex; flex-wrap:wrap; gap:3px; justify-content:center; margin-top:10px; }
+.micro-banner { width:88px; height:31px; border:1px solid var(--border-dark); display:flex; align-items:center; justify-content:center; font-size:7px; font-weight:bold; text-transform:uppercase; }
+
+/* Separators */
+.rust-separator { height:2px; background:var(--wood-400); margin:12px 0; }
+
+/* Under construction */
+.under-construction-gif { text-align:center; padding:5px; background:var(--yellow); color:var(--black); font-weight:bold; font-size:10px; border:2px dashed var(--black); margin:8px 0; }
+
+/* Alert box */
+.alert-box { background:var(--accent); color:var(--black); padding:10px 12px; text-align:center; font-weight:bold; font-size:11px; margin-bottom:12px; border:3px outset var(--accent-text); cursor:pointer; }
+.alert-box:hover { background:var(--accent-bright); }
+.alert-box:active { border-style:inset; }
+
+/* Sponsor slot */
+.sponsor-slot { background:var(--white); padding:2px; margin-bottom:6px; text-align:center; }
+.banner-fake { height:40px; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:9px; color:var(--black); line-height:1.2; }
+
+/* Shoutbox */
+.shoutbox-messages { background:#080503; border:2px inset var(--border-dark); height:130px; overflow-y:auto; padding:6px; font-size:10px; }
+.shout-msg { padding:4px 2px; border-bottom:1px dotted var(--wood-700); line-height:1.4; }
+.shout-time { color:var(--wood-250); font-family:'VT323',monospace; font-size:11px; }
+.shout-user { color:var(--accent-text); font-weight:bold; }
+.shout-user.admin { color:var(--accent); }
+.shout-text { color:var(--text-medium); }
+
+/* Poll */
+.poll-question { color:var(--accent-text); font-weight:bold; margin-bottom:10px; font-size:11px; }
+.poll-options label { display:flex; align-items:center; gap:8px; margin-bottom:6px; cursor:pointer; padding:4px; border-radius:3px; transition:background 0.2s; }
+.poll-options label:hover { background:rgba(139,69,19,0.15); }
+.poll-options input[type="radio"] { accent-color:var(--accent); }
+.poll-bar { height:6px; background:linear-gradient(90deg,var(--accent-deep),var(--accent)); margin:2px 0 8px 22px; border-radius:2px; box-shadow:0 0 5px rgba(255,111,0,0.3); }
+
+/* News */
+.news-item { margin-bottom:12px; padding-bottom:10px; border-bottom:1px dotted var(--wood-600); }
+.news-title { color:var(--accent-text); font-weight:bold; font-size:13px; margin-bottom:3px; }
+.news-meta { font-size:9px; color:var(--text-faint); margin-bottom:5px; }
+.news-meta b { color:var(--wood-050); }
+.news-content { color:var(--text-body); line-height:1.5; }
+
+/* Gallery */
+.gallery-mini { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; }
+.gallery-mini div { width:100%; height:70px; background:var(--bg-element); border:2px solid var(--border-mid); display:flex; align-items:center; justify-content:center; color:var(--text-ghost); font-size:18px; }
+.gallery-mini div:hover { border-color:var(--accent); }
+
+/* Logo header */
+
+header { height: 280px; position: relative; overflow: hidden; }
+.logo-area { text-align: center; padding-top: 20px; padding-bottom: 10px; position: relative; }
+.logo-main { letter-spacing: 2px; display: inline-flex; position: relative; }
+.logo-main a { display: block; line-height: 0; }
+.logo-main img { max-width: 100%; height: auto; max-height: 200px; display: block; margin: 0 auto; transform: rotate(-10deg); animation: floating 4s ease-in-out infinite; }
+.logo-adm img { max-width: 100%; height: auto; max-height: 200px; display: block; margin: 0 auto; transform: rotate(-10deg); }
+.logo-sub { font-family: 'VT323', monospace; font-size: 18px; color: var(--green-neon); letter-spacing: 6px; margin-top: 8px; text-transform: uppercase; }
+.logo-tagline { font-family: monospace, monospace; font-size: 10px; color: var(--text-dim); margin-top: 10px; animation: rainbow-shift 4s linear infinite; }
+@keyframes floating { 0%,100%{transform:translateY(0) rotate(-10deg)} 50%{transform:translateY(-8px) rotate(-10deg)} }
+
+/* Projects grid */
+.projects-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+.project-tile { background:var(--bg-element); border:2px outset var(--border-light); overflow:hidden; cursor:pointer; }
+.project-tile:hover { border-color:var(--accent); }
+.project-thumb { height:80px; background:var(--bg-container); display:flex; align-items:center; justify-content:center; border-bottom:1px solid var(--border-mid); font-size:30px; opacity:0.3; }
+.project-info { padding:8px; text-align:center; background:var(--bg-nav); }
+.project-name { color:var(--accent-text); font-weight:bold; font-size:10px; margin-bottom:4px; }
+.project-specs { color:var(--text-dim); font-size:9px; }
+
+/* Configurator */
+.configurator-panel { background:var(--bg-nav); border:2px inset var(--border-mid); padding:12px; }
+.config-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding-bottom:8px; border-bottom:1px dotted var(--border-dark); }
+.config-row:last-of-type { border-bottom:none; }
+.config-row label { color:var(--text-muted); font-weight:bold; width:60px; font-size:10px; text-transform:uppercase; }
+.config-row select { flex:1; max-width:330px; background:var(--bg-container); color:var(--green-terminal); border:2px inset var(--border-light); padding:4px 6px; font-family:'VT323','Courier New',monospace; font-size:14px; cursor:pointer; }
+
+/* Result */
+.result-label { font-family:'VT323',monospace; color:var(--text-muted); font-size:14px; margin-bottom:5px; }
+.result-bar-bg { width:100%; height:20px; background:var(--bg-nav); border:2px inset var(--border-mid); overflow:hidden; }
+.result-bar-fill { height:100%; width:72%; background:repeating-linear-gradient(45deg, var(--green-mid), var(--green-mid) 8px, var(--green-dark) 8px, var(--green-dark) 16px); }
+
+/* Forms */
+.retro-form { align-items:center; display:flex; flex-direction:column; background-color:var(--bg-container); font-family:'VT323','Courier New',monospace; padding:10px; gap:8px; }
+.retro-form label { color:var(--green-terminal); margin-bottom:5px; font-weight:bold; font-family:'VT323','Courier New',monospace; font-size:12px; }
+.retro-form input[type="text"], .retro-form input[type="password"] { background-color:var(--bg-container); border:2px inset var(--border-mid); color:var(--green-terminal); font-family:'VT323','Courier New',monospace; font-size:12px; padding:10px; font-weight:bold; width:100%; }
+.retro-form button { background-color:var(--bg-element); border:2px outset var(--border-mid); color:var(--green-terminal); font-family:'VT323','Courier New',monospace; padding:8px 20px; cursor:pointer; }
+.retro-form button:active { border:2px inset var(--border-mid); transform:translate(1px,1px); }
+.error-login { color:var(--red-bright); font-weight:bold; text-align:center; animation:oldschool-blink 1s steps(1) infinite; font-family:'VT323','Courier New',monospace; font-size:12px; }
+.error-message { color:var(--red-bright); background:var(--red-error-bg); border:1px solid var(--red-bright); padding:5px; margin-bottom:10px; font-weight:bold; }
+
+/* newForm */
+.newForm { display:flex; flex-direction:column; background:var(--bg-box); font-family:Verdana,Tahoma,sans-serif; padding:15px 20px; gap:12px; }
+.newForm label { color:var(--accent-text); font-size:10px; text-transform:uppercase; letter-spacing:1px; text-shadow:1px 1px 0 var(--shadow); }
+.newForm input[type="text"], .newForm textarea, .newForm select { width:100%; padding:8px; margin-top:5px; background:var(--bg-deep); border:2px inset var(--border-mid); color:var(--green-terminal); font-family:'VT323','Courier New',monospace; font-size:14px; }
+.newForm input[type="text"]:focus, .newForm textarea:focus, .newForm select:focus { outline:none; border-color:var(--accent); box-shadow:0 0 5px rgba(255,111,0,0.5); }
+
+/* Modal */
+.modal-window { position:relative; width:100%; max-height:85vh; overflow-y:auto; background:var(--bg-box); border:4px double var(--wood-100); outline:2px solid var(--wood-750); outline-offset:1px; box-shadow:0 0 0 5px var(--wood-900), 0 0 0 7px var(--wood-350), 6px 6px 0 rgba(0,0,0,0.8), inset 1px 1px 0 var(--bg-button-active), inset -1px -1px 0 var(--bg-container); }
+.modal-close { position:absolute; top:5px; right:8px; font-size:14px; cursor:pointer; color:var(--text-bright); font-family:Arial,sans-serif; font-weight:bold; z-index:30; background:var(--bg-button-active); width:20px; height:20px; line-height:18px; text-align:center; border:2px outset var(--border-light); box-shadow:1px 1px 0 var(--shadow); }
+.modal-close:hover { color:var(--text-white); background:var(--red-dark); border-color:var(--red-border); }
+
+/* Modal form */
+.modal-form { padding:14px; display:flex; flex-direction:column; gap:12px; }
+.modal-form fieldset { background:#131313; padding:14px; margin:0; border:2px solid var(--wood-400); position:relative; }
+.modal-form fieldset legend { background:linear-gradient(180deg,var(--wood-500),var(--wood-600)); color:var(--accent-text); font-weight:bold; font-size:9px; padding:4px 12px; text-transform:uppercase; letter-spacing:1px; font-family:Verdana,Tahoma,sans-serif; border:2px outset var(--wood-400); margin-left:8px; }
+.modal-form label { display:block; color:var(--wood-050); font-size:9px; font-weight:bold; text-transform:uppercase; letter-spacing:1px; margin-top:10px; margin-bottom:4px; font-family:Verdana,Tahoma,sans-serif; }
+.modal-form label:first-of-type { margin-top:0; }
+.modal-form label .required { color:var(--red-bright); font-size:11px; margin-left:2px; }
+.modal-form input[type="text"], .modal-form input[type="number"], .modal-form input[type="password"], .modal-form textarea, .modal-form select { width:100%; padding:7px 10px; background:var(--bg-deep); color:var(--green-terminal); font-family:'VT323','Courier New',monospace; font-size:15px; border:2px inset var(--border-mid); }
+.modal-form input:focus, .modal-form textarea:focus, .modal-form select:focus { outline:none; border-color:var(--accent); box-shadow:0 0 6px rgba(255,111,0,0.4), inset 0 0 3px rgba(255,111,0,0.1); }
+.modal-form .form-help { color:var(--text-ghost); font-size:9px; font-family:Verdana,Tahoma,sans-serif; margin-top:3px; padding-left:2px; font-style:italic; }
+.modal-form .form-error { background:var(--red-error-bg-dk); border:2px solid var(--red-bright); padding:8px 12px; color:var(--red-bright); font-weight:bold; font-size:10px; text-align:center; animation:oldschool-blink 1.5s steps(1) infinite; }
+.modal-form .form-success { background:var(--green-success-bg); border:2px solid var(--green-neon); padding:8px 12px; text-align:center; color:var(--green-neon); font-family:'VT323',monospace; font-size:16px; letter-spacing:2px; text-shadow:0 0 6px rgba(118,255,3,0.3); }
+.modal-form .form-actions { display:flex; gap:8px; justify-content:flex-end; margin-top:4px; }
+.modal-form button[type="submit"] { background:linear-gradient(180deg,var(--wood-500),var(--wood-600)); color:var(--accent-text); font-size:11px; font-weight:bold; padding:10px 24px; cursor:pointer; font-family:Tahoma,Verdana,sans-serif; text-transform:uppercase; letter-spacing:2px; border:2px outset var(--wood-400); box-shadow:2px 2px 0 var(--shadow); }
+.modal-form button[type="submit"]:hover { background:linear-gradient(180deg,var(--wood-400),var(--wood-500)); color:var(--text-white); }
+.modal-form button[type="submit"]:disabled { background:var(--bg-element); color:var(--text-ghost); border-color:var(--border-dark); cursor:not-allowed; box-shadow:none; }
+.modal-form button[type="button"] { background:var(--bg-button); color:var(--text-muted); font-size:10px; font-weight:bold; padding:8px 18px; cursor:pointer; font-family:Tahoma,Verdana,sans-serif; text-transform:uppercase; letter-spacing:1px; border:2px outset var(--border-light); box-shadow:1px 1px 0 var(--shadow); }
+.modal-form button[type="button"]:hover { background:var(--bg-button-active); color:var(--text-bright); }
+.modal-form button.btn-delete { background:var(--red-dark); color:var(--red-light); border:2px outset var(--red-border); box-shadow:2px 2px 0 var(--shadow); }
+.modal-form button.btn-delete:hover { background:var(--red-darker); color:var(--text-white); }
+
+/* Inventory table */
+.inventory-table { width:100%; border-collapse:collapse; font-size:10px; background:var(--bg-container); }
+.inventory-table th { background:linear-gradient(180deg,var(--wood-500),var(--wood-600)); color:var(--accent-text); padding:10px 8px; border:1px solid var(--wood-400); text-align:left; text-transform:uppercase; font-size:9px; letter-spacing:1px; font-family:Verdana,Tahoma,sans-serif; text-shadow:1px 1px 0 var(--shadow); }
+.inventory-table td { border:1px solid var(--border-darker); border-bottom:1px solid var(--border-dark); padding:8px; color:var(--text-medium); vertical-align:middle; }
+.inventory-table tbody tr { background:var(--bg-content); }
+.inventory-table tbody tr:nth-child(even) { background:var(--bg-nav); }
+.inventory-table tbody tr:hover { background:rgba(139,69,19,0.15); }
+
+/* Stat rows */
+.stat-row { display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px dotted var(--border-dark); }
+.stat-row:last-child { border-bottom:none; }
+.stat-label { color:var(--text-muted); font-size:10px; }
+.stat-value { font-family:'VT323',monospace; font-size:16px; color:var(--text-white); }
+
+/* Loading / No results */
+.no-results { text-align:center; padding:20px; font-family:'VT323',monospace; font-size:16px; letter-spacing:2px; color:var(--accent); }
+.loading { text-align:center; padding:20px; font-family:'VT323',monospace; font-size:16px; letter-spacing:2px; color:var(--green-terminal); }
+
+/* Detail sections */
+.detail-section { background:var(--bg-box); border:3px double var(--wood-400); outline:2px solid var(--wood-750); outline-offset:0; margin-bottom:12px; box-shadow:2px 2px 0 var(--shadow), inset 1px 1px 0 var(--border-dark); }
+.detail-section-header { background:linear-gradient(90deg, var(--wood-600) 0%, var(--wood-200) 35%, var(--wood-500) 65%, var(--wood-600) 100%); color:var(--accent-text); font-weight:bold; font-size:10px; padding:6px 10px; text-transform:uppercase; letter-spacing:2px; border-bottom:2px solid var(--wood-400); text-shadow:1px 1px 0 var(--shadow); font-family:Verdana,Tahoma,sans-serif; }
+.detail-section-body { display:flex; padding:12px; gap:16px; }
+.detail-id-col { display:flex; align-items:center; justify-content:center; min-width:80px; padding:10px; border-right:1px dotted var(--wood-600); }
+.detail-id-glow { font-family:'VT323',monospace; font-size:86px; font-weight:bold; color:var(--accent-text); text-shadow:0 0 8px rgba(255,204,128,0.6), 0 0 20px rgba(255,152,0,0.3), 0 0 40px rgba(255,111,0,0.15); letter-spacing:2px; }
+.detail-info-col { flex:1; min-width:0; }
+.detail-part-name { font-family:'VT323',monospace; font-size:22px; font-weight:bold; color:var(--accent-text); text-shadow:0 0 6px rgba(255,204,128,0.5), 0 0 15px rgba(255,152,0,0.2); letter-spacing:1px; margin-bottom:10px; padding-bottom:8px; border-bottom:1px dotted var(--wood-600); }
+.detail-actions { display:flex; gap:8px; justify-content:flex-end; padding:10px 12px; border-top:1px dotted var(--wood-600); }
+
+/* Terminal */
+#terminal { background-color:var(--black); border:2px solid var(--green-terminal); color:var(--green-terminal); font-family:'VT323',monospace; font-size:12px; padding:10px; height:160px; overflow-y:auto; width:100%; }
+
+/* Footer */
+.footer-links a { color:var(--text-muted); margin:0 8px; font-size:10px; }
+.footer-copy { color:var(--text-ghost); font-size:9px; line-height:1.5; }
+.footer-copy span { color:var(--wood-100); }
+.footer-badges { display:flex; justify-content:center; gap:6px; margin-top:10px; }
+.footer-badge { background:var(--bg-nav); border:1px solid var(--border-dark); padding:2px 8px; font-size:8px; color:var(--text-faint); font-family:'VT323',monospace; }
+
+/* Background CRT */
+.background-crt { background:repeating-linear-gradient(0deg, transparent 0px, transparent 2px, rgba(0,0,0,0.3) 2px, rgba(0,0,0,0.3) 4px); }
+
+/* Admin hub */
+.admin-hub-grid { display:grid; grid-template-columns:repeat(3,150px); gap:10px; grid-auto-rows:150px; justify-content:center; align-items:center; }
+.admin-hub-tile { width:100%; height:100%; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+
+/* Homepage mockup layout */
+.mockup-frame { border: 3px double var(--wood-100); outline: 1px solid var(--wood-600); outline-offset: 2px; box-shadow: 0 0 0 6px var(--wood-850), 0 0 0 8px var(--wood-350); background: var(--bg-container); overflow: hidden; }
+.mockup-header { text-align: center; padding: 15px 10px; border-bottom: 2px solid var(--wood-400); background: linear-gradient(180deg, var(--bg-container), var(--bg-deep)); }
+.mockup-header .logo-text { font-family: 'VT323', monospace; font-size: 36px; color: var(--accent-text); text-shadow: 0 0 10px rgba(255,204,128,0.5), 0 0 30px rgba(255,111,0,0.2); letter-spacing: 4px; }
+.mockup-header .tagline { font-size: 9px; color: var(--text-muted); margin-top: 4px; }
+.mockup-nav { background: var(--bg-nav); border-bottom: 2px solid var(--border-light); padding: 8px 5px; display: flex; justify-content: center; flex-wrap: wrap; gap: 4px; }
+.mockup-body { display: flex; gap: 0; }
+.mockup-main { flex: 1; min-width: 0; padding: 10px; border-right: 1px solid var(--border-dark); }
+.mockup-sidebar { width: 220px; flex-shrink: 0; padding: 10px; }
+.mockup-footer { background: var(--bg-deep); border-top: 3px double var(--wood-400); padding: 12px; text-align: center; }
+.mockup-webring { padding: 8px; background: var(--bg-deep); border: 2px inset var(--border-dark); text-align: center; margin-bottom: 10px; }
+.mockup-note { background: var(--bg-deep); border: 2px dashed var(--border-dark); padding: 10px; margin-bottom: 16px; text-align: center; font-size: 9px; color: var(--text-ghost); font-family: 'VT323', monospace; letter-spacing: 1px; }
+
+/* ============================================================
+   UI KIT PAGE STYLES
+   ============================================================ */
+
+.kit-wrapper {
+    max-width: 1024px;
+    margin: 0 auto;
+    background: var(--bg-container);
+    border: 4px double var(--wood-100);
+    outline: 1px solid var(--wood-600);
+    outline-offset: 2px;
+    box-shadow:
+        0 0 0 6px var(--wood-850),
+        0 0 0 8px var(--wood-350),
+        0 0 40px rgba(0,0,0,0.9),
+        inset 0 0 50px rgba(0,0,0,0.5);
+}
+
+.kit-hero {
+    text-align: center;
+    padding: 30px 20px 20px;
+    border-bottom: 3px double var(--wood-400);
+    background: linear-gradient(180deg, var(--bg-container) 0%, var(--bg-deep) 100%);
+    position: relative;
+    overflow: hidden;
+}
+.kit-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(0deg, transparent 0px, transparent 2px, rgba(0,0,0,0.15) 2px, rgba(0,0,0,0.15) 4px);
+    pointer-events: none;
+}
+.kit-hero h1 {
+    font-family: 'VT323', monospace;
+    font-size: 48px;
+    letter-spacing: 6px;
+    color: var(--accent-text);
+    text-shadow: 0 0 10px rgba(255,204,128,0.5), 0 0 30px rgba(255,111,0,0.2);
+    position: relative;
+    z-index: 1;
+}
+.kit-hero p {
+    font-family: 'VT323', monospace;
+    font-size: 16px;
+    color: var(--green-neon);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-top: 6px;
+    position: relative;
+    z-index: 1;
+}
+
+.kit-section {
+    padding: 20px;
+    border-bottom: 1px solid var(--border-dark);
+}
+.kit-section:last-child { border-bottom: none; }
+
+.kit-section-title {
+    font-family: 'VT323', monospace;
+    font-size: 22px;
+    color: var(--accent);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--wood-600);
+    text-shadow: 0 0 8px rgba(255,111,0,0.3);
+}
+
+.kit-label {
+    font-family: 'VT323', monospace;
+    font-size: 13px;
+    color: var(--green-terminal);
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    margin-top: 14px;
+    text-shadow: 0 0 4px rgba(0,255,0,0.3);
+}
+.kit-label:first-child { margin-top: 0; }
+
+.kit-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.kit-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.kit-desc {
+    color: var(--text-ghost);
+    font-size: 9px;
+    font-style: italic;
+    margin-top: 4px;
+    margin-bottom: 12px;
+}
+
+/* color swatch */
+.swatch-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 6px;
+}
+.swatch {
+    height: 44px;
+    border: 1px solid var(--border-dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    font-family: 'VT323', monospace;
+    letter-spacing: 1px;
+}
+.swatch span { opacity: 0.8; }
+
+/* typography helper */
+.typo-sample { margin-bottom: 6px; }
+
+/* Scrollbar styles for this page */
+::-webkit-scrollbar { width:12px; }
+::-webkit-scrollbar-track { background:var(--wood-900); border:1px solid var(--wood-600); }
+::-webkit-scrollbar-thumb { background:linear-gradient(180deg,var(--wood-300),var(--wood-600)); border:1px solid var(--wood-100); border-radius:2px; }
+::-webkit-scrollbar-thumb:hover { background:linear-gradient(180deg,var(--wood-150),var(--wood-500)); }
+
+</style>
+</head>
+<body>
+
+<div class="kit-wrapper">
+
+    <!-- ============================== HERO ============================== -->
+    <div class="kit-hero">
+        <h1>ZŁOMOTRON.PL</h1>
+        <p>// UI KIT &amp; COMPONENT REFERENCE //</p>
+    </div>
+
+    <!-- ============================== 0. COLORS ============================== -->
+    <div class="kit-section">
+        <div class="kit-section-title">0. Paleta kolorów — CSS Custom Properties</div>
+
+        <div class="kit-label">--bg-* (tła)</div>
+        <div class="swatch-grid">
+            <div class="swatch" style="background:#050302"><span style="color:#999">--bg-body</span><span style="color:#666">#050302</span></div>
+            <div class="swatch" style="background:#0a0a0a"><span style="color:#999">--bg-deep</span><span style="color:#666">#0a0a0a</span></div>
+            <div class="swatch" style="background:#111111"><span style="color:#999">--bg-container</span><span style="color:#666">#111111</span></div>
+            <div class="swatch" style="background:#151515"><span style="color:#999">--bg-content</span><span style="color:#666">#151515</span></div>
+            <div class="swatch" style="background:#1a1a1a"><span style="color:#999">--bg-nav</span><span style="color:#666">#1a1a1a</span></div>
+            <div class="swatch" style="background:#1c1c1c"><span style="color:#999">--bg-box</span><span style="color:#666">#1c1c1c</span></div>
+            <div class="swatch" style="background:#222222"><span style="color:#999">--bg-element</span><span style="color:#666">#222222</span></div>
+            <div class="swatch" style="background:#2a2a2a"><span style="color:#999">--bg-button</span><span style="color:#666">#2a2a2a</span></div>
+            <div class="swatch" style="background:#333333"><span style="color:#999">--bg-button-hover</span><span style="color:#666">#333333</span></div>
+            <div class="swatch" style="background:#3a3a3a"><span style="color:#999">--bg-button-active</span><span style="color:#666">#3a3a3a</span></div>
+        </div>
+
+        <div class="kit-label">--wood-* (brązy)</div>
+        <div class="swatch-grid">
+            <div class="swatch" style="background:#3e2723"><span style="color:#ffcc80">--wood-600</span><span style="color:#999">#3e2723</span></div>
+            <div class="swatch" style="background:#4e342e"><span style="color:#ffcc80">--wood-500</span><span style="color:#999">#4e342e</span></div>
+            <div class="swatch" style="background:#5d4037"><span style="color:#ffcc80">--wood-400</span><span style="color:#999">#5d4037</span></div>
+            <div class="swatch" style="background:#6d4c41"><span style="color:#ffcc80">--wood-200</span><span style="color:#999">#6d4c41</span></div>
+            <div class="swatch" style="background:#8b4513"><span style="color:#ffcc80">--wood-100</span><span style="color:#999">#8b4513</span></div>
+            <div class="swatch" style="background:#8b7355"><span style="color:#fff">--wood-050</span><span style="color:#ddd">#8b7355</span></div>
+        </div>
+
+        <div class="kit-label">--accent-* (pomarańcze)</div>
+        <div class="swatch-grid">
+            <div class="swatch" style="background:#ff6f00"><span style="color:#000">--accent</span><span style="color:#333">#ff6f00</span></div>
+            <div class="swatch" style="background:#ff9800"><span style="color:#000">--accent-bright</span><span style="color:#333">#ff9800</span></div>
+            <div class="swatch" style="background:#ff8800"><span style="color:#000">--accent-warm</span><span style="color:#333">#ff8800</span></div>
+            <div class="swatch" style="background:#d84315"><span style="color:#fff">--accent-deep</span><span style="color:#ddd">#d84315</span></div>
+            <div class="swatch" style="background:#1c1c1c; color:#ffcc80"><span>--accent-text</span><span style="color:#ffcc80">#ffcc80</span></div>
+            <div class="swatch" style="background:#1c1c1c; color:#ffab91"><span>--accent-link</span><span style="color:#ffab91">#ffab91</span></div>
+        </div>
+
+        <div class="kit-label">--green-* / --red-* / kolory kategorii</div>
+        <div class="swatch-grid">
+            <div class="swatch" style="background:#000; color:#76ff03"><span>--green-neon</span><span>#76ff03</span></div>
+            <div class="swatch" style="background:#000; color:#00ff00"><span>--green-terminal</span><span>#00ff00</span></div>
+            <div class="swatch" style="background:#000; color:#ff0000"><span>--red-bright</span><span>#ff0000</span></div>
+            <div class="swatch" style="background:#000; color:#e57373"><span>--red-status</span><span>#e57373</span></div>
+            <div class="swatch" style="background:#1a237e; color:#9fa8da"><span>MOBO</span><span>blue</span></div>
+            <div class="swatch" style="background:#4a148c; color:#e1bee7"><span>PSU</span><span>purple</span></div>
+            <div class="swatch" style="background:#004d40; color:#b2dfdb"><span>CASE</span><span>teal</span></div>
+            <div class="swatch" style="background:#000; color:#ffff00"><span>--yellow</span><span>#ffff00</span></div>
+        </div>
+    </div>
+
+    <!-- ============================== 1. TYPOGRAPHY ============================== -->
+    <div class="kit-section">
+        <div class="kit-section-title">1. Typografia</div>
+
+        <div class="kit-label">.fire-text</div>
+        <div class="typo-sample"><span class="fire-text" style="font-size:28px; font-family:'VT323',monospace;">ZŁOMOTRON FIRE TEXT</span></div>
+
+        <div class="kit-label">.rainbow-text</div>
+        <div class="typo-sample"><span class="rainbow-text" style="font-size:18px; font-family:monospace;">Kolorowy tekst z animacją tęczy</span></div>
+
+        <div class="kit-label">.blink</div>
+        <div class="typo-sample"><span class="blink" style="color:var(--red-bright); font-family:'VT323',monospace; font-size:14px;">! ! ! UWAGA — TEKST MIGAJĄCY ! ! !</span></div>
+
+        <div class="kit-label">.part-name</div>
+        <div class="typo-sample"><span class="part-name">ASUS H87M-E (LGA1150)</span></div>
+
+        <div class="kit-label">.stock-count</div>
+        <div class="typo-sample"><span class="stock-count">×42</span></div>
+
+        <div class="kit-label">.price-special</div>
+        <div class="typo-sample"><span class="price-special">29,99 PLN — OKAZJA!</span></div>
+
+        <div class="kit-label">.status-ok / .status-warn / .status-bad</div>
+        <div class="kit-row">
+            <span class="status-ok">● Działa</span>
+            <span class="status-warn">● Ryzyko</span>
+            <span class="status-bad">● Uszkodzony</span>
+        </div>
+
+        <div class="kit-label">Font stack</div>
+        <div class="kit-desc">Body: Verdana, Tahoma, Arial, sans-serif (11px) · Mono: 'VT323', monospace · Terminal: 'Courier New', monospace</div>
+    </div>
+
+    <!-- ============================== 2. BUTTONS ============================== -->
+    <div class="kit-section">
+        <div class="kit-section-title">2. Przyciski</div>
+
+        <div class="kit-label">.btn</div>
+        <div class="kit-row">
+            <span class="btn">Domyślny</span>
+            <span class="btn btn-small">Btn-small</span>
+        </div>
+
+        <div class="kit-label">.btn-action / .btn-action.edit / .btn-action.delete</div>
+        <div class="kit-row">
+            <span class="btn-action">Akcja</span>
+            <span class="btn-action edit">✎ Edytuj</span>
+            <span class="btn-action delete">✕ Usuń</span>
+        </div>
+
+        <div class="kit-label">.btn-calculate</div>
+        <div style="max-width:300px;">
+            <button class="btn-calculate">⚡ Oblicz wynik budowy</button>
+        </div>
+
+        <div class="kit-label">.button-retro-adminhub</div>
+        <div class="kit-row">
+            <span class="button-retro-adminhub">Panel admina</span>
+            <span class="button-retro-adminhub">Zapisz zmiany</span>
+        </div>
+
+        <div class="kit-label">.button-group</div>
+        <div class="button-group" style="max-width: 500px;">
+            <button class="btn">Anuluj</button>
+            <button class="btn" style="background:linear-gradient(180deg,var(--wood-500),var(--wood-600)); border-color:var(--wood-400);">Zapisz</button>
+            <button class="btn" style="background:var(--red-dark); border-color:var(--red-bright); color:var(--red-light);">Usuń</button>
+        </div>
+
+        <div class="kit-label">.modal-form button[type="submit"] / button[type="button"] / button.btn-delete</div>
+        <div class="kit-row">
+            <button type="button" style="background:linear-gradient(180deg,var(--wood-500),var(--wood-600)); color:var(--accent-text); font-size:11px; font-weight:bold; padding:10px 24px; cursor:pointer; font-family:Tahoma,Verdana,sans-serif; text-transform:uppercase; letter-spacing:2px; border:2px outset var(--wood-400); box-shadow:2px 2px 0 var(--shadow);">Zapisz część</button>
+            <button type="button" style="background:var(--bg-button); color:var(--text-muted); font-size:10px; font-weight:bold; padding:8px 18px; cursor:pointer; font-family:Tahoma,Verdana,sans-serif; text-transform:uppercase; letter-spacing:1px; border:2px outset var(--border-light); box-shadow:1px 1px 0 var(--shadow);">Anuluj</button>
+            <button type="button" style="background:var(--red-dark); color:var(--red-light); border:2px outset var(--red-border); box-shadow:2px 2px 0 var(--shadow); font-size:10px; font-weight:bold; padding:8px 18px; cursor:pointer; font-family:Tahoma,Verdana,sans-serif; text-transform:uppercase; letter-spacing:1px;">Skasuj</button>
+            <button type="button" disabled style="background:var(--bg-element); color:var(--text-ghost); border:2px outset var(--border-dark); cursor:not-allowed; box-shadow:none; font-size:10px; font-weight:bold; padding:8px 18px; font-family:Tahoma,Verdana,sans-serif; text-transform:uppercase; letter-spacing:1px;">Disabled</button>
+        </div>
+    </div>
+
+    <!-- ============================== 3. BADGES ============================== -->
+    <div class="kit-section">
+        <div class="kit-section-title">3. Odznaki (Badges)</div>
+
+        <div class="kit-label">.badge-new</div>
+        <div class="kit-row">
+            <span class="badge-new">New!</span>
+            <span style="color:var(--text-body)">Nowa pozycja w magazynie</span>
+        </div>
+
+        <div class="kit-label">.category-badge (.mobo / .cpu / .gpu / .ram / .psu / .case)</div>
+        <div class="kit-row">
+            <span class="category-badge mobo">MOBO</span>
+            <span class="category-badge cpu">CPU</span>
+            <span class="category-badge gpu">GPU</span>
+            <span class="category-badge ram">RAM</span>
+            <span class="category-badge psu">PSU</span>
+            <span class="category-badge case">CASE</span>
+        </div>
+
+        <div class="kit-label">.status-badge (.available / .reserved / .sold)</div>
+        <div class="kit-row">
+            <span class="status-badge available">Dostępny</span>
+            <span class="status-badge reserved">Zarezerwowany</span>
+            <span class="status-badge sold">Sprzedany</span>
+        </div>
+
+        <div class="kit-label">.footer-badge</div>
+        <div class="kit-row">
+            <span class="footer-badge">HTML 4.01</span>
+            <span class="footer-badge">CSS 2.0</span>
+            <span class="footer-badge">800×600</span>
+            <span class="footer-badge">IE 6.0</span>
+            <span class="footer-badge">NETSCAPE</span>
+        </div>
+    </div>
+
+    <!-- ============================== 4. NAV ============================== -->
+    <div class="kit-section">
+        <div class="kit-section-title">4. Nawigacja</div>
+
+        <div class="kit-label">.nav-tab / .nav-tab.active</div>
+        <div style="background:var(--bg-nav); border:2px solid var(--border-light); border-bottom:2px solid var(--border-faint); padding:8px 5px; display:flex; justify-content:center; flex-wrap:wrap; gap:4px;">
+            <span class="nav-tab active">🏠 Główna</span>
+            <span class="nav-tab">📦 Magazyn</span>
+            <span class="nav-tab">🔧 Konfigurator</span>
+            <span class="nav-tab">📰 Newsy</span>
+            <span class="nav-tab">📸 Galeria</span>
+            <span class="nav-tab">📁 Projekty</span>
+            <span class="nav-tab">ℹ️ O mnie</span>
+        </div>
+
+        <div class="kit-label">.stats-bar + .online-indicator + .online-dot</div>
+        <div class="stats-bar" style="margin-top:8px;">
+            <div class="online-indicator">
+                <span class="online-dot"></span>
+                <span style="color:var(--green-terminal)">1</span> online
+            </div>
+            <div>
+                <a href="#">admin</a>
+                <a href="#">ustawienia</a>
+                <a href="#">wyloguj</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================== 5. BOX ============================== -->
+    <div class="kit-section">
+        <div class="kit-section-title">5. Box (Karta / Panel)</div>
+
+        <div class="kit-grid-2">
+            <div>
+                <div class="kit-label">.box + .box-header + .box-content</div>
+                <div class="box">
+                    <div class="box-header">
+                        <span><span class="box-header-icon">📋</span> Box Header</span>
+                        <span style="font-size:8px; color:var(--text-faint);">WIDGET</span>
+                    </div>
+                    <div class="box-content">
+                        <p style="color:var(--text-body); line-height:1.5;">Standardowy kontener treści.<br>Zawiera .box-header z ikoną i .box-content z paddingiem.</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="kit-label">.detail-section + .detail-section-header</div>
+                <div class="detail-section">
+                    <div class="detail-section-header">⚙ Szczegóły części</div>
+                    <div class="detail-section-body">
+                        <div class="detail-id-col">
+                            <span class="detail-id-glow">7</span>
+                        </div>
+                        <div class="detail-info-col">
+                            <div class="detail-part-name">Xeon E3-1240 v5</div>
+                            <div class="stat-row"><span class="stat-label">Socket:</span><span class="stat-value">LGA1151</span></div>
+                            <div class="stat-row"><span class="stat-label">Cena:</span><span class="stat-value" style="color:var(--green-neon)">89 PLN</span></div>
+                        </div>
+                    </div>
+                    <div class="detail-actions">
+                        <span class="btn-action edit">✎ Edytuj</span>
+                        <span class="btn-action delete">✕ Usuń</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================== 6. MARQUEE ============================== -->
+    <div class="kit-section" style="padding-bottom:0;">
+        <div class="kit-section-title">6. Marquee + Alerty</div>
+
+        <div class="kit-label">.marquee-container + .news-separator</div>
+    </div>
+    <div class="marquee-container">
+        <marquee behavior="scroll" direction="left" scrollamount="3">
+            🔧 Nowa dostawa DDR3 w magazynie! <span class="news-separator">★</span>
+            GTX 950 za 79 PLN — ostatnia sztuka! <span class="news-separator">★</span>
+            Złomotron szuka dostawców złomu z Dolnego Śląska <span class="news-separator">★</span>
+        </marquee>
+    </div>
+    <div class="kit-section" style="padding-top:12px;">
+        <div class="kit-label">.alert-box</div>
+        <div class="alert-box">⚡ NOWA DOSTAWA! Kliknij, aby zobaczyć najnowsze części w magazynie!</div>
+
+        <div class="kit-label">.under-construction-gif</div>
+        <div class="under-construction-gif">🚧 STRONA W BUDOWIE — WRÓĆ PÓŹNIEJ! 🚧</div>
+
+        <div class="kit-label">.error-message</div>
+        <div class="error-message">⚠ Wystąpił błąd podczas zapisu danych do bazy!</div>
+    </div>
+
+    <!-- ============================== 7. COUNTER ============================== -->
+    <div class="kit-section">
+        <div class="kit-section-title">7. Licznik odwiedzin</div>
+
+        <div class="kit-label">.hit-counter-fancy + .counter-display + .counter-digits + .counter-digit</div>
+        <div style="max-width:280px;">
+            <div class="hit-counter-fancy">
+                <div class="counter-display">
+                    <div class="counter-label">Odwiedziny strony</div>
+                    <div class="counter-digits">
+                        <div class="counter-digit">0</div>
+                        <div class="counter-digit">1</div>
+                        <div class="counter-digit">3</div>
+                        <div class="counter-digit">3</div>
+                        <div class="counter-digit">7</div>
+                    </div>
+                    <div class="counter-since">od 01.01.2024</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================== 8. SHOUTBOX ============================== -->
+    <div class="kit-section">
+        <div class="kit-section-title">8. Shoutbox</div>
+
+        <div class="kit-label">.shoutbox-messages + .shout-msg + .shout-time + .shout-user / .shout-user.admin + .shout-text</div>
+        <div class="box" style="max-width:350px;">
+            <div class="box-header"><span class="box-header-icon">💬</span> Shoutbox</div>
+            <div class="shoutbox-messages">
+                <div class="shout-msg">
+                    <span class="shout-time">[14:22]</span>
+                    <span class="shout-user admin">admin</span>:
+                    <span class="shout-text">Nowa dostawa RAM DDR3 wjechała!</span>
+                </div>
+                <div class="shout-msg">
+                    <span class="shout-time">[14:18]</span>
+                    <span class="shout-user">złomiarz_87</span>:
+                    <span class="shout-text">Macie jakieś H87 pod 1150?</span>
+                </div>
+                <div class="shout-msg">
+                    <span class="shout-time">[14:15]</span>
+                    <span class="shout-user admin">admin</span>:
+                    <span class="shout-text">Witamy na złomotronie! 🔧</span>
+                </div>
+                <div class="shout-msg">
+                    <span class="shout-time">[13:50]</span>
+                    <span class="shout-user">pcmaster</span>:
+                    <span class="shout-text">Szukam GT630 do testów</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================== 9. POLL ============================== -->
+    <div class="kit-section">
+        <div class="kit-section-title">9. Ankieta (Poll)</div>
+
+        <div class="kit-label">.poll-question + .poll-options + .poll-bar</div>
+        <div class="box" style="max-width: 350px;">
+            <div class="box-header"><span class="box-header-icon">📊</span> Ankieta</div>
+            <div class="box-content">
+                <div class="poll-question">Jaki socket preferujesz?</div>
+                <div class="poll-options">
+                    <label><input type="radio" name="poll-demo"> LGA1151 (42%)</label>
+                    <div class="poll-bar" style="width:42%"></div>
+                    <label><input type="radio" name="poll-demo"> LGA1150 (31%)</label>
+                    <div class="poll-bar" style="width:31%"></div>
+                    <label><input type="radio" name="poll-demo"> AM4 (27%)</label>
+                    <div class="poll-bar" style="width:27%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================== 10. NEWS ============================== -->
+    <div class="kit-section">
+        <div class="kit-section-title">10. Newsy</div>
+
+        <div class="kit-label">.news-item + .news-title + .news-meta + .news-content</div>
+        <div class="box">
+            <div class="box-header"><span class="box-header-icon">📰</span> Aktualności</div>
+            <div class="box-content">
+                <div class="news-item">
+                    <div class="news-title">Nowa dostawa procesorów Xeon z likwidacji serwerowni</div>
+                    <div class="news-meta"><b>admin</b> · 15.03.2026 · 2 komentarze</div>
+                    <div class="news-content">Udało się pozyskać partię Xeonów E3-1240v5 oraz E3-1270v3 z likwidowanej serwerowni w Poznaniu. Wszystkie przetestowane — działają bez zarzutu. Ceny od 49 PLN.</div>
+                </div>
+                <div class="news-item" style="border-bottom:none; margin-bottom:0;">
+                    <div class="news-title">Złomotron na targach elektroniki w Zielonej Górze</div>
+                    <div class="news-meta"><b>admin</b> · 10.03.2026 · 5 komentarzy</div>
+                    <div class="news-content">W najbliższą sobotę zapraszamy na stoisko złomotronu — będzie sprzęt ze złomowisk i kawa za darmo.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================== 11. GALLERY ============================== -->
+    <div class="kit-section">
+        <div class="kit-section-title">11. Galeria + Projekty</div>
+
+        <div class="kit-grid-2">
+            <div>
+                <div class="kit-label">.gallery-mini</div>
+                <div class="gallery-mini">
+                    <div>📷</div><div>📷</div><div>📷</div>
+                    <div>📷</div><div>📷</div><div>📷</div>
+                </div>
+            </div>
+            <div>
+                <div class="kit-label">.projects-grid + .project-tile + .project-thumb + .project-info</div>
+                <div class="projects-grid" style="grid-template-columns:repeat(2,1fr);">
+                    <div class="project-tile">
+                        <div class="project-thumb">🖥️</div>
+                        <div class="project-info">
+                            <div class="project-name">BEETLE/M-III</div>
+                            <div class="project-specs">Xeon E3-1240v5 · GT630</div>
+                        </div>
+                    </div>
+                    <div class="project-tile">
+                        <div class="project-thumb">💾</div>
+                        <div class="project-info">
+                            <div class="project-name">NAS Optiplex</div>
+                            <div class="project-specs">i5-3470 · 16GB · 4×2TB</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================== 12. TABLE ============================== -->
+    <div class="kit-section">
+        <div class="kit-section-title">12. Tabela inwentarza</div>
+
+        <div class="kit-label">.inventory-table + th + td + tbody tr:hover</div>
+        <div style="overflow-x:auto; border:2px inset var(--border-mid);">
+            <table class="inventory-table">
+                <thead>
+                    <tr>
+                        <th style="width:40px; text-align:center;">#</th>
+                        <th>Nazwa</th>
+                        <th>Kategoria</th>
+                        <th style="text-align:right;">Cena</th>
+                        <th style="text-align:center;">Ilość</th>
+                        <th style="text-align:center;">Status</th>
+                        <th style="text-align:center;">Akcje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="text-align:center; font-family:'VT323',monospace; font-size:14px; color:var(--text-faint);">1</td>
+                        <td style="color:var(--accent-text); font-weight:bold;">ASUS H87M-E</td>
+                        <td><span class="category-badge mobo">MOBO</span></td>
+                        <td style="text-align:right; font-family:'VT323',monospace; font-size:14px; color:var(--green-neon);">40 PLN</td>
+                        <td style="text-align:center; font-family:'VT323',monospace; font-size:16px;">2</td>
+                        <td style="text-align:center;"><span class="status-badge available">Dostępny</span></td>
+                        <td style="text-align:center;">
+                            <span class="btn-action edit">✎</span>
+                            <span class="btn-action delete">✕</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center; font-family:'VT323',monospace; font-size:14px; color:var(--text-faint);">2</td>
+                        <td style="color:var(--accent-text); font-weight:bold;">Xeon E3-1270v3</td>
+                        <td><span class="category-badge cpu">CPU</span></td>
+                        <td style="text-align:right; font-family:'VT323',monospace; font-size:14px; color:var(--green-neon);">89 PLN</td>
+                        <td style="text-align:center; font-family:'VT323',monospace; font-size:16px;">1</td>
+                        <td style="text-align:center;"><span class="status-badge reserved">Zarezerwowany</span></td>
+                        <td style="text-align:center;">
+                            <span class="btn-action edit">✎</span>
+                            <span class="btn-action delete">✕</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center; font-family:'VT323',monospace; font-size:14px; color:var(--text-faint);">3</td>
+                        <td style="color:var(--accent-text); font-weight:bold;">GTX 950 2GB</td>
+                        <td><span class="category-badge gpu">GPU</span></td>
+                        <td style="text-align:right; font-family:'VT323',monospace; font-size:14px; color:var(--green-neon);">79 PLN</td>
+                        <td style="text-align:center; font-family:'VT323',monospace; font-size:16px;">1</td>
+                        <td style="text-align:center;"><span class="status-badge sold">Sprzedany</span></td>
+                        <td style="text-align:center;">
+                            <span class="btn-action edit">✎</span>
+                            <span class="btn-action delete">✕</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="kit-label">.stat-row + .stat-label + .stat-value</div>
+        <div class="box" style="max-width:300px; margin-top:8px;">
+            <div class="box-header"><span class="box-header-icon">📊</span> Statystyki</div>
+            <div class="box-content">
+                <div class="stat-row"><span class="stat-label">Wszystkie części:</span><span class="stat-value">147</span></div>
+                <div class="stat-row"><span class="stat-label">Dostępne:</span><span class="stat-value" style="color:var(--green-neon)">98</span></div>
+                <div class="stat-row"><span class="stat-label">Wartość:</span><span class="stat-value" style="color:var(--accent)">4 230 PLN</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================== 13. CONFIGURATOR ============================== -->
+    <div class="kit-section">
+        <div class="kit-section-title">13. Konfigurator</div>
+
+        <div class="kit-label">.configurator-panel + .config-row + .result-bar-bg + .result-bar-fill</div>
+        <div class="configurator-panel" style="max-width:500px;">
+            <div class="config-row">
+                <label>CPU</label>
+                <select>
+                    <option>Xeon E3-1240 v5 (4C/8T)</option>
+                    <option>i5-6400 (4C/4T)</option>
+                </select>
+            </div>
+            <div class="config-row">
+                <label>GPU</label>
+                <select>
+                    <option>GT 630 2GB DDR3</option>
+                    <option>GTX 950 2GB</option>
+                </select>
+            </div>
+            <div class="config-row">
+                <label>RAM</label>
+                <select>
+                    <option>8GB DDR4 2133MHz</option>
+                    <option>16GB DDR4 2400MHz</option>
+                </select>
+            </div>
+        </div>
+        <div style="max-width:500px; background:var(--black); border:2px inset var(--border-mid); padding:15px; margin-top:10px; text-align:center;">
+            <div class="result-label">WYNIK WYDAJNOŚCI</div>
+            <div style="font-family:'VT323',monospace; font-size:42px; font-weight:bold; color:var(--green-terminal);">7,200</div>
+            <div class="result-bar-bg" style="margin-top:12px;">
+                <div class="result-bar-fill"></div>
+            </div>
+            <div style="margin-top:8px; font-size:11px; color:var(--text-medium);">Ranga: <span style="font-family:'VT323',monospace; font-size:20px; font-weight:bold; letter-spacing:2px; color:var(--accent-text);">ZŁOMOWY WOJOWNIK</span></div>
+        </div>
+    </div>
+
+    <!-- ============================== 14. FORMS ============================== -->
+    <div class="kit-section">
+        <div class="kit-section-title">14. Formularze</div>
+
+        <div class="kit-grid-2">
+            <div>
+                <div class="kit-label">.retro-form (login)</div>
+                <div class="retro-form" style="max-width:280px; gap:8px;">
+                    <label>Login:</label>
+                    <input type="text" placeholder="admin">
+                    <label>Hasło:</label>
+                    <input type="password" placeholder="********">
+                    <button style="margin-top:6px;">[ ZALOGUJ ]</button>
+                    <div class="error-login">BŁĘDNE HASŁO!</div>
+                </div>
+            </div>
+            <div>
+                <div class="kit-label">.newForm</div>
+                <div class="newForm" style="max-width:320px;">
+                    <p><label>Nazwa części</label>
+                    <input type="text" placeholder="np. ASUS H87M-E"></p>
+                    <p><label>Kategoria</label>
+                    <select>
+                        <option>-- Wybierz --</option>
+                        <option>MOBO</option>
+                        <option>CPU</option>
+                        <option>GPU</option>
+                    </select></p>
+                    <p><label>Notatki</label>
+                    <textarea rows="2" placeholder="Dodatkowe info..."></textarea></p>
+                    <button type="submit" class="btn">Dodaj część</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================== 15. MODAL FORM ============================== -->
+    <div class="kit-section">
+        <div class="kit-section-title">15. Modal + Modal Form</div>
+
+        <div class="kit-label">.modal-window + .modal-close + .modal-form + fieldset + legend</div>
+        <div class="modal-window" style="max-width:440px;">
+            <div style="background:linear-gradient(90deg,var(--wood-600) 0%,var(--wood-200) 35%,var(--wood-500) 65%,var(--wood-600) 100%); color:var(--accent-text); font-weight:bold; font-size:11px; padding:7px 12px; padding-right:32px; text-transform:uppercase; letter-spacing:2px; border-bottom:2px solid var(--wood-400); text-shadow:1px 1px 0 var(--shadow); font-family:Verdana,Tahoma,sans-serif;">
+                Dodaj nową część
+            </div>
+            <span class="modal-close">✕</span>
+            <div class="modal-form">
+                <fieldset>
+                    <legend>Podstawowe dane</legend>
+                    <label>Nazwa <span class="required">*</span></label>
+                    <input type="text" placeholder="np. Xeon E3-1240 v5">
+                    <span class="form-help">Pełna nazwa podzespołu</span>
+                    <label>Kategoria <span class="required">*</span></label>
+                    <select>
+                        <option>-- Wybierz kategorię --</option>
+                        <option>MOBO</option>
+                        <option>CPU</option>
+                        <option>GPU</option>
+                        <option>RAM</option>
+                        <option>PSU</option>
+                        <option>CASE</option>
+                    </select>
+                    <label>Cena (PLN)</label>
+                    <input type="number" placeholder="0.00">
+                </fieldset>
+
+                <div class="form-error">⚠ Uzupełnij wymagane pola!</div>
+                <div class="form-success">✓ CZĘŚĆ ZAPISANA POMYŚLNIE</div>
+
+                <div class="form-actions">
+                    <button type="button">Anuluj</button>
+                    <button type="submit">Zapisz część</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================== 16. TERMINAL ============================== -->
+    <div class="kit-section">
+        <div class="kit-section-title">16. Terminal</div>
+
+        <div class="kit-label">#terminal</div>
+        <div id="terminal">
+            <div>C:\ZLOMOTRON> dir /w</div>
+            <div>&nbsp;</div>
+            <div> Volume in drive C is ZLOMOTRON</div>
+            <div> Directory of C:\ZLOMOTRON</div>
+            <div>&nbsp;</div>
+            <div>[MAGAZYN]&nbsp;&nbsp;[GALERIA]&nbsp;&nbsp;[PROJEKTY]&nbsp;&nbsp;[CONFIG]</div>
+            <div>PARTS.DB&nbsp;&nbsp;&nbsp;&nbsp;SCRAPER.PY&nbsp;&nbsp;INDEX.HTML&nbsp;&nbsp;STYLE.CSS</div>
+            <div>&nbsp;</div>
+            <div style="color:var(--yellow); font-weight:bold;">        8 File(s)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;147 parts in inventory</div>
+            <div style="color:var(--yellow);">        4,230 PLN total value</div>
+            <div>&nbsp;</div>
+            <div>C:\ZLOMOTRON> <span class="blink">_</span></div>
+        </div>
+    </div>
+
+    <!-- ============================== 17. MICRO / SPONSOR ============================== -->
+    <div class="kit-section">
+        <div class="kit-section-title">17. Mikro-bannery, Sponsor, Separatory</div>
+
+        <div class="kit-label">.micro-banners + .micro-banner</div>
+        <div class="micro-banners">
+            <div class="micro-banner" style="background:var(--bg-nav); color:var(--text-ghost);">BEST VIEWED<br>800×600</div>
+            <div class="micro-banner" style="background:var(--bg-nav); color:var(--accent);">MADE WITH<br>❤ NODE.JS</div>
+            <div class="micro-banner" style="background:var(--bg-nav); color:var(--green-terminal);">LINUX<br>POWERED</div>
+            <div class="micro-banner" style="background:var(--bg-nav); color:var(--text-faint);">NO ADS<br>FOREVER</div>
+        </div>
+
+        <div class="kit-label">.sponsor-slot + .banner-fake</div>
+        <div class="sponsor-slot" style="max-width:300px;">
+            <div class="banner-fake">📢 YOUR AD HERE — 468×60</div>
+        </div>
+
+        <div class="kit-label">.rust-separator</div>
+        <div class="rust-separator"></div>
+        <div style="color:var(--text-ghost); font-size:9px; text-align:center; margin-top:-6px;">↑ .rust-separator — brązowa linia ↑</div>
+    </div>
+
+    <!-- ============================== 18. ANIMATIONS ============================== -->
+    <div class="kit-section">
+        <div class="kit-section-title">18. Animacje + Efekty</div>
+
+        <div class="kit-label">.rainbow-border</div>
+        <div class="box rainbow-border" style="max-width:300px; border-width:3px; border-style:solid;">
+            <div class="box-content" style="text-align:center; color:var(--text-body);">Box z tęczową ramką</div>
+        </div>
+
+        <div class="kit-label">.background-crt</div>
+        <div class="background-crt" style="padding:20px; text-align:center;">
+            <span style="font-family:'VT323',monospace; font-size:18px; color:var(--green-terminal);">Efekt linii CRT skanowania</span>
+        </div>
+
+        <div class="kit-label">.loading / .no-results</div>
+        <div class="loading">▓▓▓ ŁADOWANIE DANYCH... ▓▓▓</div>
+        <div class="no-results" style="padding:20px;">BRAK WYNIKÓW DLA ZAPYTANIA</div>
+    </div>
+
+    <!-- ============================== 19. ADMIN HUB ============================== -->
+    <div class="kit-section">
+        <div class="kit-section-title">19. Admin Hub</div>
+
+        <div class="kit-label">.admin-hub-grid + .admin-hub-tile + .button-retro-adminhub</div>
+        <div class="admin-hub-grid">
+            <div class="admin-hub-tile">
+                <button class="button-retro-adminhub" style="width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px;">
+                    <span style="font-size:34px;">📦</span>
+                    <span style="font-size:8px;">MAGAZYN</span>
+                </button>
+            </div>
+            <div class="admin-hub-tile">
+                <button class="button-retro-adminhub" style="width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px;">
+                    <span style="font-size:34px;">📰</span>
+                    <span style="font-size:8px;">NEWSY</span>
+                </button>
+            </div>
+            <div class="admin-hub-tile">
+                <button class="button-retro-adminhub" style="width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px;">
+                    <span style="font-size:34px;">⚙️</span>
+                    <span style="font-size:8px;">USTAWIENIA</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================== 20. HOMEPAGE MOCKUP ============================== -->
+    <div class="kit-section">
+        <div class="kit-section-title">20. Makieta strony głównej</div>
+        <div class="mockup-note">⚠ POGLĄDOWY WIDOK STRONY GŁÓWNEJ — ZŁOŻONY ZE WSZYSTKICH KOMPONENTÓW UI KITU ⚠</div>
+
+        <div class="mockup-frame">
+
+            <!-- HEADER -->
+            <div class="mockup-header">
+            <div class="logo-main">
+                <a href="/"><img src="zlomotron-logo.png" alt="Zlomotron Logo"></a>
+            </div>
+                <div class="tagline">Dla Ciebie elektrozłom? Dla mnie też! | Projekty • Ciekawostki • Wiadomości • Okazje • Pasja | Est. 2008 (mentalnie)</div>
+                <div style="margin-top: 8px;">
+                    <span class="blink" style="color: var(--red-bright); font-size: 10px; font-weight: bold;">&gt;&gt;&gt; ŚWIEŻO PIECZONA STRONA!!! &lt;&lt;&lt;</span>
+                </div>
+            </div>
+
+            <!-- NAV -->
+            <div class="mockup-nav">
+                <span class="nav-tab active">🏠 Główna</span>
+                <span class="nav-tab">📦 Magazyn</span>
+                <span class="nav-tab">🔧 Konfigurator</span>
+                <span class="nav-tab">📰 Newsy</span>
+                <span class="nav-tab">📸 Galeria</span>
+                <span class="nav-tab">📁 Projekty</span>
+                <span class="nav-tab">ℹ️ O mnie</span>
+            </div>
+
+            <!-- STATS BAR -->
+            <div class="stats-bar">
+                <div class="online-indicator">
+                    <span class="online-dot"></span>
+                    <span>Online: <strong style="color: var(--green-neon);">1</strong> userów</span>
+                    <span style="margin-left: 20px;">Dzisiaj: <strong style="color: var(--accent-text);">143</strong></span>
+                    <span style="margin-left: 15px;">Łącznie: <strong style="color: var(--accent-text);">84,921</strong></span>
+                </div>
+                <div>
+                    <a href="#">Profil</a>
+                    <a href="#" style="margin-left: 8px;">Logowanie</a>
+                    <a href="#" style="margin-left: 8px;">Rejestracja</a>
+                    <a href="#" style="margin-left: 8px;">FAQ</a>
+                </div>
+            </div>
+
+            <!-- MARQUEE -->
+            <div class="marquee-container">
+                <marquee behavior="scroll" direction="left" scrollamount="3">
+                    🔧 Nowa dostawa DDR3 w magazynie! <span class="news-separator">★</span>
+                    GTX 950 za 79 PLN — ostatnia sztuka! <span class="news-separator">★</span>
+                    PROJEKT PIEKŁO — galeria zaktualizowana! <span class="news-separator">★</span>
+                </marquee>
+            </div>
+
+            <!-- BODY: MAIN + SIDEBAR -->
+            <div class="mockup-body">
+
+                <!-- MAIN CONTENT -->
+                <div class="mockup-main">
+
+                    <!-- Welcome banner -->
+                    <div style="background: var(--black); border: 3px double var(--green-terminal); padding: 10px; margin-bottom: 12px; text-align: center;">
+                        <span class="rainbow-text" style="font-size: 14px; font-weight: bold; font-family: 'VT323', monospace;">
+                            ★★★ WITAJ NA ZŁOMOTRONIE ★★★
+                        </span>
+                        <div style="font-size: 10px; color: var(--green-terminal); margin-top: 5px;">
+                            Twoje centrum retro komputerów od 2006 roku!
+                        </div>
+                        <div style="margin-top: 5px;">
+                            <span class="blink" style="color: var(--yellow); font-size: 9px;">&gt;&gt;&gt; WEJDŹ I ZOSTAŃ &lt;&lt;&lt;</span>
+                        </div>
+                    </div>
+
+                    <!-- News -->
+                    <div class="box">
+                        <div class="box-header">
+                            <span><span class="box-header-icon">📰</span> Aktualności</span>
+                            <span style="font-size: 9px; color: var(--text-muted);">[RSS]</span>
+                        </div>
+                        <div class="box-content">
+                            <div class="news-item">
+                                <div class="news-title">
+                                    Wielkie porządki w warsztacie!
+                                    <span class="badge-new">NEW!</span>
+                                </div>
+                                <div class="news-meta">Dodał: <b>Admin</b> | 03.01.2026 | Komentarze: 7</div>
+                                <div class="news-content">
+                                    Znalazłem 4 płyty główne na Socket A i 2 na Socket 478! Wszystkie trafiły do działu Magazyn.
+                                    Kto pierwszy ten lepszy. Dodatkowo mam kilka radiatorów miedzianych z demobilu — idealne pod modding.
+                                </div>
+                            </div>
+                            <div class="news-item">
+                                <div class="news-title">Projekt "Piekielna Maszyna" ukończony!</div>
+                                <div class="news-meta">Dodał: <b>Admin</b> | 28.12.2025 | Komentarze: 23</div>
+                                <div class="news-content">
+                                    Modding obudowy Chieftec zakończony sukcesem! Wyciąłem okno dremelkiem, wstawiłem pleksi
+                                    i zamontowałem 4 katody UV. Zdjęcia w dziale Projekty.
+                                </div>
+                            </div>
+                            <div class="news-item" style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;">
+                                <div class="news-title">Nowa funkcja: Kreator Bestii v0.9 BETA</div>
+                                <div class="news-meta">Dodał: <b>Admin</b> | 20.12.2025 | Komentarze: 15</div>
+                                <div class="news-content">
+                                    Dodaję nowy moduł — wirtualny konfigurator PC! Możecie teraz składać komputery z części
+                                    dostępnych w moim magazynie!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mini gallery -->
+                    <div class="box">
+                        <div class="box-header">
+                            <span><span class="box-header-icon">📷</span> Ostatnie wrzutki do galerii</span>
+                        </div>
+                        <div class="box-content">
+                            <div class="gallery-mini">
+                                <div>GPU</div>
+                                <div>CABLE</div>
+                                <div>BIOS</div>
+                                <div>RAD</div>
+                                <div>LED</div>
+                                <div>UV</div>
+                            </div>
+                            <div style="text-align: center; margin-top: 10px;">
+                                <span class="btn btn-small">Zobacz całą galerię →</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- SIDEBAR -->
+                <div class="mockup-sidebar">
+
+                    <!-- Counter -->
+                    <div class="box">
+                        <div class="box-header">
+                            <span><span class="box-header-icon">👁️</span> Licznik</span>
+                        </div>
+                        <div class="box-content hit-counter-fancy">
+                            <div style="font-size: 9px; color: var(--text-muted); margin-bottom: 5px;">Jesteś gościem numer:</div>
+                            <div style="display: inline-flex; gap: 1px;">
+                                <span style="background: var(--black); color: var(--green-terminal); font-family: 'VT323', monospace; font-size: 22px; padding: 3px 6px; border: 1px solid var(--green-terminal);">0</span>
+                                <span style="background: var(--black); color: var(--green-terminal); font-family: 'VT323', monospace; font-size: 22px; padding: 3px 6px; border: 1px solid var(--green-terminal);">8</span>
+                                <span style="background: var(--black); color: var(--green-terminal); font-family: 'VT323', monospace; font-size: 22px; padding: 3px 6px; border: 1px solid var(--green-terminal);">4</span>
+                                <span style="background: var(--black); color: var(--green-terminal); font-family: 'VT323', monospace; font-size: 22px; padding: 3px 6px; border: 1px solid var(--green-terminal);">9</span>
+                                <span style="background: var(--black); color: var(--green-terminal); font-family: 'VT323', monospace; font-size: 22px; padding: 3px 6px; border: 1px solid var(--green-terminal);">2</span>
+                                <span style="background: var(--black); color: var(--green-terminal); font-family: 'VT323', monospace; font-size: 22px; padding: 3px 6px; border: 1px solid var(--green-terminal);">1</span>
+                            </div>
+                            <div style="font-size: 8px; color: var(--text-ghost); margin-top: 5px;">od 01.01.2006</div>
+                            <div style="margin-top: 5px;">
+                                <span class="blink" style="color: var(--yellow); font-size: 9px;">★ DZIĘKUJEMY! ★</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quote -->
+                    <div class="box">
+                        <div class="box-header">
+                            <span><span class="box-header-icon">💭</span> Cytat Dnia</span>
+                        </div>
+                        <div class="box-content" style="text-align: center; font-style: italic; color: var(--text-medium); font-size: 10px;">
+                            "640K ought to be enough for anybody."
+                            <div style="color: var(--text-faint); font-size: 9px; margin-top: 5px; font-style: normal;">- Bill Gates (podobno)</div>
+                        </div>
+                    </div>
+
+                    <!-- Poll -->
+                    <div class="box">
+                        <div class="box-header">
+                            <span><span class="box-header-icon">📊</span> Szybka Sonda</span>
+                        </div>
+                        <div class="box-content">
+                            <div class="poll-question">Najlepszy system operacyjny to:</div>
+                            <div class="poll-options">
+                                <label><input type="radio" name="poll-mockup"> Windows 7</label>
+                                <div class="poll-bar" style="width: 28%;"></div>
+                                <label><input type="radio" name="poll-mockup"> Oczywiście że Linux</label>
+                                <div class="poll-bar" style="width: 18%;"></div>
+                                <label><input type="radio" name="poll-mockup"> Windows 10 [*]</label>
+                                <div class="poll-bar" style="width: 9%;"></div>
+                            </div>
+                            <button class="btn" style="margin-top: 8px; width: 100%;">GŁOSUJ</button>
+                            <div style="font-size: 9px; color: var(--text-ghost); margin-top: 8px; text-align: center;">Głosów: 1,247</div>
+                        </div>
+                    </div>
+
+                    <!-- Shoutbox -->
+                    <div class="box">
+                        <div class="box-header">
+                            <span><span class="box-header-icon">💬</span> Shoutbox</span>
+                            <span style="font-size: 9px; color: var(--text-muted);">[odśwież]</span>
+                        </div>
+                        <div class="box-content" style="padding: 0;">
+                            <div class="shoutbox-messages">
+                                <div class="shout-msg">
+                                    <span class="shout-time">[14:32]</span>
+                                    <span class="shout-user admin">Admin:</span>
+                                    <span class="shout-text">Test shoutboxa!</span>
+                                </div>
+                                <div class="shout-msg">
+                                    <span class="shout-time">[14:15]</span>
+                                    <span class="shout-user">User:</span>
+                                    <span class="shout-text">Działa!!!</span>
+                                </div>
+                            </div>
+                            <div style="padding: 6px; text-align: center; background: var(--bg-deep); border-top: 1px solid var(--border-dark);">
+                                <div style="color: var(--yellow); font-size: 9px; font-weight: bold;">⚠️ MODUŁ W TRAKCIE TWORZENIA ⚠️</div>
+                                <div style="font-size: 9px; color: var(--text-faint); margin-top: 3px;">Pisanie dostępne wkrótce...</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Under construction -->
+                    <div class="box">
+                        <div class="box-header">
+                            <span><span class="box-header-icon">🚧</span> Info</span>
+                        </div>
+                        <div class="box-content">
+                            <div class="under-construction-gif">🚧 UNDER CONSTRUCTION 🚧</div>
+                            <div style="text-align: center; font-size: 9px; color: var(--text-muted);">
+                                Nowe funkcje wkrótce!<br>
+                                <span class="rainbow-text">★ STAY TUNED ★</span>
+                            </div>
+                            <div style="margin-top: 8px; text-align: center;">
+                                <span style="font-size: 20px;">👷</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sponsors -->
+                    <div class="box">
+                        <div class="box-header">
+                            <span><span class="box-header-icon">⭐</span> Partnerzy</span>
+                        </div>
+                        <div class="box-content">
+                            <div class="sponsor-slot">
+                                <div class="banner-fake" style="background: linear-gradient(180deg, #ffeb3b, #ffc107);">FAKE BANER REKLAMOWY</div>
+                            </div>
+                            <div class="sponsor-slot">
+                                <div class="banner-fake" style="background: linear-gradient(180deg, #e0e0e0, #9e9e9e);">TWOJA REKLAMA TUTAJ<br><span style="font-size: 8px;">Kontakt: admin@zlomotron.pl</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- FOOTER -->
+            <div class="mockup-footer">
+
+                <!-- Webring -->
+                <div class="mockup-webring">
+                    <span style="color: var(--text-muted); font-size: 9px;">[ </span>
+                    <a href="#" style="color: var(--green-terminal);">← POPRZEDNIA</a>
+                    <span style="color: var(--text-muted); font-size: 9px;"> | </span>
+                    <span class="rainbow-text" style="font-weight: bold;">⚡ RETRO PC WEBRING ⚡</span>
+                    <span style="color: var(--text-muted); font-size: 9px;"> | </span>
+                    <a href="#" style="color: var(--green-terminal);">NASTĘPNA →</a>
+                    <span style="color: var(--text-muted); font-size: 9px;"> ]</span>
+                </div>
+
+                <!-- Links -->
+                <div class="footer-links">
+                    <a href="#">Strona Główna</a> |
+                    <a href="#">Kontakt</a> |
+                    <a href="#">Regulamin</a> |
+                    <a href="#">Polityka Prywatności</a> |
+                    <a href="#">Mapa Strony</a> |
+                    <a href="#">Linki</a>
+                </div>
+
+                <!-- Copyright -->
+                <div class="footer-copy">
+                    Copyright &copy; 2026 <span>ZŁOMOTRON</span> — Cyfrowe Złomowisko Retro PC<br>
+                    Design by Me | All Rights Reserved by Me | Valid HTML 4.01 (chyba) | Best viewed in 1024x768
+                </div>
+
+                <!-- Badges -->
+                <div class="footer-badges">
+                    <span class="footer-badge">HTML 4.01</span>
+                    <span class="footer-badge">CSS 2.1</span>
+                    <span class="footer-badge">JavaScript 1.5</span>
+                    <span class="footer-badge">800x600+</span>
+                    <span class="footer-badge">IE6 Compatible*</span>
+                    <span class="footer-badge">Firefox 1.5+</span>
+                </div>
+
+                <!-- Micro banners -->
+                <div class="micro-banners">
+                    <div class="micro-banner" style="background: linear-gradient(#00f, #000); color: #fff;">NETSCAPE!</div>
+                    <div class="micro-banner" style="background: #000; color: var(--green-terminal);">MATRIX</div>
+                    <div class="micro-banner" style="background: linear-gradient(#f00, #ff0); color: #000;">ANTY-<br>SPOTIFY</div>
+                    <div class="micro-banner" style="background: #fff; color: #000;">MADE ON<br>PC</div>
+                    <div class="micro-banner" style="background: linear-gradient(#333, #666); color: #0ff;">Y2K<br>Y20K</div>
+                    <div class="micro-banner rainbow-border" style="background: #000; color: #fff; border-width: 2px;">FREE<br>SITE</div>
+                </div>
+
+                <div style="margin-top: 5px; font-size: 8px; color: var(--border-dark);">
+                    * nie testowane, 99% że nie działa, ale fajnie wygląda
+                </div>
+
+                <!-- Best viewed + guestbook -->
+                <div style="margin-top: 12px; padding: 8px; background: var(--bg-deep); border: 1px solid var(--border-dark); text-align: center;">
+                    <div style="font-size: 9px; color: var(--text-muted); margin-bottom: 5px;">
+                        Best viewed in <span style="color: #0088ff;">1024x768</span> with <span style="color: var(--accent);">Firefox</span> 🖥️
+                    </div>
+                    <div style="font-size: 9px;">
+                        <a href="#" style="color: var(--yellow);">📖 KSIĘGA GOŚCI</a>
+                        <span style="color: var(--border-mid);"> | </span>
+                        <a href="#" style="color: var(--yellow);">✉️ NAPISZ DO MNIE</a>
+                        <span style="color: var(--border-mid);"> | </span>
+                        <a href="#" style="color: var(--yellow);">🔗 LINKI</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ============================== 21. FOOTER ============================== -->
+    <div class="kit-section" style="padding-bottom:0;">
+        <div class="kit-section-title">21. Footer</div>
+        <div class="kit-label">.footer-links + .footer-copy + .footer-badges</div>
+    </div>
+    <footer style="background:var(--bg-container); border-top:3px double var(--wood-400); padding:12px; text-align:center;">
+        <div class="footer-links">
+            <a href="#">Strona główna</a>
+            <a href="#">Regulamin</a>
+            <a href="#">Kontakt</a>
+            <a href="#">RSS</a>
+        </div>
+        <div class="footer-copy">
+            <span>ZŁOMOTRON.PL</span> &copy; 2024–2026
+        </div>
+        <div class="footer-badges">
+            <span class="footer-badge">HTML 4.01</span>
+            <span class="footer-badge">CSS 2.0</span>
+            <span class="footer-badge">800×600</span>
+            <span class="footer-badge">NODE.JS</span>
+            <span class="footer-badge">SQLITE</span>
+        </div>
+    </footer>
+
+</div>
+<!-- ============================== THANK YOU FOR CHECKING IT! ============================== -->
+</body>
+</html>

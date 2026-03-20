@@ -1,0 +1,10 @@
+<nav id="main-nav">
+    <% publicPages
+        .filter(p => p.menu_order !== null)
+        .sort((a, b) => a.menu_order - b.menu_order)  
+        .forEach(page => { %>
+            <div class="nav-tab">
+                <a href="/<%= page.slug %>"><img src="" alt="<%= page.pageName %>" class="nav-icon"><%= page.pageName %></a>
+            </div>
+    <% }); %>
+</nav>

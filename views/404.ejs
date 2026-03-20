@@ -1,0 +1,14 @@
+<h2>Nie ma takiej strony!</h2>
+<p>Za chwile zostaniesz przekierowany na strone główną</p>
+<p><a href="/">Wróć teraz</a></p>
+
+<script>
+    let seconds = 3;
+    const interval = setInterval(() => {
+        seconds--;  
+        if (seconds <= 0) {
+            clearInterval(interval);
+            window.location.href = '/';
+        }
+    }, 1000);
+</script>

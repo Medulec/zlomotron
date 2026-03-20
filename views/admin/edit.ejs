@@ -1,0 +1,92 @@
+<head>
+<script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
+</head>
+<body>
+<div class="box">
+<div class="box-header">
+Edytujesz strone: <%= page.pageName %> <span><a href="/admin/pages">WRÓĆ</a></span>
+</div>
+
+<form method="POST" class="newForm" action="/admin/pages/edit/<%= page.id %>">
+    
+    <p>
+        <label>Nazwa strony:</label><br>
+        <input type="text" name="pageName" value="<%= page.pageName %>" required>
+    </p>
+    
+    <p>
+        <label>Slug (URL):</label><br>
+        <input type="text" name="slug" value="<%= page.slug %>" required>
+    </p>
+    
+    <p>
+        <label>Kategoria:</label><br>
+        <select id="category" name="category">
+        <option value="page">Zwykła strona</option>
+                <option value="news">News</option>
+                        <option value="project">Projekt</option>
+                                <option value="warehouse">Aukcje</option>
+        </select>
+    </p>
+    
+    <p>
+        <label>Autor:</label><br>
+        <input type="text" name="author" value="<%= page.author %>">
+    </p>
+    
+    <p>
+        <div id="editor">
+         <%= page.content %> </div>
+        <input type="hidden" name="content">
+    </p>
+
+    <p>
+        <label>
+            <input type="checkbox" name="public" value="1" <%= page.public == 1 ? 'checked' : '' %>>
+            Strona publiczna?
+        </label>
+    </p>
+    
+    <p>
+        <label>Dostęp:</label><br>
+        <select name="access">
+            <option value="all" <%= page.access === 'all' ? 'selected' : '' %>>Wszyscy</option>
+            <option value="members" <%= page.access === 'members' ? 'selected' : '' %>>Tylko członkowie</option>
+            <option value="admin" <%= page.access === 'admin' ? 'selected' : '' %>>Tylko admin</option>
+        </select>
+    </p>
+    
+    <p>
+        <button type="submit">Zapisz zmiany</button>
+        <a href="/admin/pages">Anuluj</a>
+    </p>
+    
+</form>
+</div>
+</body>
+
+<script>
+
+
+  const quill = new Quill('#editor', {
+theme: 'snow',
+    modules: {
+        toolbar: [
+            [{ 'header': [1, 2, 3, false] }],
+            ['bold', 'italic', 'underline', 'strike'],
+            [{ 'color': [] }, { 'background': [] }],
+            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+            [{ 'align': [] }],
+            ['blockquote', 'code-block'],
+            ['link', 'image'],
+            ['clean']
+        ]
+    }
+  });
+
+const form = document.querySelector('form');
+form.addEventListener('submit', function() {
+    document.querySelector('input[name="content"]').value = quill.root.innerHTML;
+});
+</script>

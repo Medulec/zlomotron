@@ -1,0 +1,192 @@
+<head>
+    <title>Złomotron - Centralne centrum dowodzenia</title>
+</head>
+
+
+<body>
+    <div class = "box">
+        <div class="box-header">
+            <span><span class="box-header-icon">🗔</span>Logowanie do centrum dowodzenia</span>
+        </div>
+<form method="POST" class="retro-form" action="/admin/login" id="login-form">
+    <label for="password">Hasło:</label>
+    <input type="password" id="password" name="password" required>
+
+        <% if (typeof error !== 'undefined') { %>
+        <p class="error-login"><%= error %></p>
+    <% } %>
+
+    <div class="button-group">
+    <button type="button" onclick="window.location.href='/'">Ewakuacja!</button>
+    <button type="submit">Zaloguj się</button>
+    </div>
+</form>
+
+<div id="terminal" class="terminal-hidden">
+    <div id="terminal-lines">
+
+    </div>
+    <div id="terminal-result">
+
+    </div>
+</div>
+
+</div>
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function() {
+
+
+    const CommandLinesList = [
+    "Instalacja Pentiumów... Gotowe!",
+    "Czyszczenie Celeronów...",
+    "Ściąganie 8GB RAM DDR5... Za drogo!",
+    "Optymalizacja dysków HDD... Gotowe!",
+    "Podkręcanie kart graficznych... Nieudane, układ spalony!",
+    "Defragmentacja dysków SSD? Chyba gotowe!",
+    "Inicjalizacja przycisku TURBO...",
+    "Podkręcanie procesora o 3 MHz...",
+    "Tworzenie magii w CONFIG.SYS...",
+    "Uruchamianie Szwedzkiego Protokołu [1215]",
+    "Reset systemu w celu naprawy... wszystkiego",
+    "Nakładanie pasty termoprzewodzącej (za dużo)...",
+    "Generowanie składu Juliana...",
+    "Usuwanie /windows/system32",
+    "echo Witaj Świecie! > COM1",
+    "ping localhost -t",
+    "format C: /Q /X",
+    "SYSTEM.SIGNAL: bip bip biiiiip",
+    "Składanie ofiary dla Boga z Maszyny",
+    "Wkładanie CD 2 z 7 do napędu...",
+    "Naciśnij dowolny klawisz, aby sie w końcu zalogować...",
+    "Wyciąganie GTX 1080 z szafy...",
+    "Włącz...",
+    "Wkładanie CD 5 z 7 do napędu...",
+    "Wyłącz...",
+    "Restart...",
+    "1010011 1101000 1100001 1110010 100000 1101110 1100001 1101100 1100101 1101010 100000 1101101 1101001 100000 1111010 1110101 1110010 1101011 1110101",
+    "kompilacja starego_sprzętu...",
+    "Wyszukiwanie pliku AUTOEXEC.BAT...",
+    "Ładowanie palety VGA...",
+    "if (turbo === true) cpu.przyspiesz();",
+    "setInterval(sprawdzTemperature, 1000); // CRITICAL",
+    "while(true) { system.zawies(); }",
+    "Zamawianie nowych części na Allegro...",
+    "Aktualizacja BIOS-u...",
+    "Sprawdzanie obecności wirusów... Brak wykrytych DUŻYCH zagrożeń.",
+    "Głaskanie kotka w celu zwiększenia wydajności komputera...",
+    "bios.pray();",
+    "system.holyShield.activate();",
+    "Zwiększanie prędkości wentylatorów do 5000 RPM... Protokół helikoper",
+    "Chłodzenie procesora wentylatorem...",
+    "Zamawianie pizzy dla ownera...",
+    "Z-Ł-O-M-O-T-R-O-N procedure complete.",
+    "Rozmowa z girl...",
+    "Płacz nad aktualnymi cenami podzespołów...",
+    "Konsultacje z GLaDOS...",
+    "Wychodzenie z Netheru...",
+    "coffee.refill(admin);"
+    ]
+    function randomCommand() {
+        const random = Math.floor(Math.random() * CommandLinesList.length);
+        return CommandLinesList[random];
+    }
+
+
+function addTerminalLine(text) {
+    const terminalLines = document.getElementById('terminal-lines'); 
+    const line = document.createElement('div');  
+    line.textContent = '> ' + text;              
+    terminalLines.appendChild(line);             
+    terminalLines.scrollTop = terminalLines.scrollHeight;
+}
+
+function showResult(success) {
+    setTimeout(() => {
+        document.getElementById('terminal-lines').innerHTML = '';
+        const result = document.getElementById('terminal-result'); 
+        
+        if (success) {
+            result.innerHTML = `<pre>
+▄████▄ ▄█████ ▄█████ ██████ ▄█████ ▄█████    ▄████  █████▄  ▄████▄ ███  ██ ██████ ██████ ████▄  
+██▄▄██ ██     ██     ██▄▄   ▀▀▀▄▄▄ ▀▀▀▄▄▄   ██  ▄▄▄ ██▄▄██▄ ██▄▄██ ██ ▀▄██   ██   ██▄▄   ██  ██ 
+██  ██ ▀█████ ▀█████ ██▄▄▄▄ █████▀ █████▀    ▀███▀  ██   ██ ██  ██ ██   ██   ██   ██▄▄▄▄ ████▀  
+</pre>`;
+            result.style.color = '#0f0';
+            
+            setTimeout(() => {
+                window.location.href = '/admin/'; 
+            }, 3000);
+            
+        } else {
+            result.innerHTML = `<pre>
+▄████▄ ▄█████ ▄█████ ██████ ▄█████ ▄█████   ████▄  ██████ ███  ██ ██ ██████ ████▄  
+██▄▄██ ██     ██     ██▄▄   ▀▀▀▄▄▄ ▀▀▀▄▄▄   ██  ██ ██▄▄   ██ ▀▄██ ██ ██▄▄   ██  ██ 
+██  ██ ▀█████ ▀█████ ██▄▄▄▄ █████▀ █████▀   ████▀  ██▄▄▄▄ ██   ██ ██ ██▄▄▄▄ ████▀  
+</pre>`;
+            result.style.color = '#f00';
+            
+            setTimeout(() => {
+                window.location.href = '/admin/login';
+            }, 3000);
+        }
+    });
+}
+
+const form = document.getElementById('login-form');
+
+
+if (!form) {
+
+    return;
+}
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const submitLock = form.querySelector('button[type="submit"]');
+    submitLock.disabled = true;
+    submitLock.textContent = 'LOGOWANIE...'
+    const password = document.getElementById('password').value;
+    
+    document.getElementById('terminal').classList.remove('terminal-hidden');
+
+    document.getElementById('terminal').scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+
+    });
+
+    let lineCount = 0;
+    const maxLines = Math.floor(Math.random()*25)+10;
+    
+
+const interval = setInterval(() => {
+    addTerminalLine(randomCommand());
+    lineCount++;
+    
+    if (lineCount >= maxLines) {
+        addTerminalLine(" SYSTEM READY ");
+        clearInterval(interval);
+    }
+}, 200);
+
+    fetch('/admin/login', { 
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ password: password })
+    })
+    .then(response => response.json())
+    .then(data => {
+        setTimeout(() => {
+            showResult(data.success);
+        }, maxLines * 200 + 300);  
+    });
+});
+});
+
+</script>
+</body>

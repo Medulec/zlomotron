@@ -1,0 +1,43 @@
+<div class="box">
+<div class="box-header">
+<span><span class="box-header-icon">🗔</span>Tabela stron</span>
+</div>
+<div class="box-content">
+<table class="inventory-table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Tytuł</th>
+            <th>Slug</th>
+            <th>Publiczna?</th>
+            <th>Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% pages.forEach(page => { %>
+        <tr>
+            <td><%= page.id %></td>
+            <td><%= page.pageName %></td>
+            <td><%= page.slug %></td>
+            <td><%= page.public ? 'TAK' : 'NIE' %></td>
+            <td>
+                <a href="/admin/pages/edit/<%= page.id %>">Edytuj</a>
+                <form method="POST"
+                    action="/admin/pages/delete/<%= page.id %>"
+                    style="display:inline;"
+                    onsubmit="return confirm('Czy na pewno chcesz usunąć tę stronę? <%= page.pageName%>?');">
+                    <button type="submit">Usuń</button>
+                </form>
+            </td>
+        </tr>
+        <% }); %>
+    </tbody>
+</table>
+
+<p>
+    <a href="/admin/pages/new">+ Dodaj nową stronę</a>
+</p>
+
+</div>
+
+</div>
