@@ -77,8 +77,7 @@ SQLite database is stored as a host volume outside the container for persistence
 
 ## Why this stack?
 
-Because it's enough. No ORM, no React, no Tailwind, no Webpack, no TypeScript. Just a server that renders HTML, a database that's a single file, and CSS written by hand. It's fast to build, fast to run, easy to deploy, and easy to understand top to bottom, like the old Internet.
-
+Because it's enough. No ORM, no React, no Tailwind, no Webpack. Just a pure server that renders HTML, a database that's a single file, and CSS written by hand. It's fast to build, fast to run, easy to deploy, and easy to understand top to bottom.
 If something breaks, there are very few layers to dig through.
 
 ---
