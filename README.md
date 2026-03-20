@@ -88,8 +88,9 @@ Interested? Check out the UI Kit and a simple landing page mockup to learn more 
 
 ```
 https://medulec.github.io/zlomotron/zlomotron-ui-kit.html
+
 ```
 
 ## License
 
-Do whatever you want with it, it's free.
+[MIT License](./LICENSE)
