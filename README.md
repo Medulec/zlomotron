@@ -84,12 +84,8 @@ If something breaks, there are very few layers to dig through.
 
 ## UI Kit
 
-Interested? Check out the UI Kit and a simple landing page mockup to learn more about the Złomotron concept!
+Interested? [Check out the UI Kit](https://medulec.github.io/zlomotron/zlomotron-ui-kit.html) and a simple landing page mockup to learn more about the Złomotron concept!
 
-```
-https://medulec.github.io/zlomotron/zlomotron-ui-kit.html
-
-```
 
 ## License
 

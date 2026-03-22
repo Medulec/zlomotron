@@ -11,7 +11,7 @@
     "zlomotron",
     "webpage"
   ],
-  "author": "snippi",
+  "author": "medulec",
   "license": "MIT",
   "dependencies": {
     "bcrypt": "^6.0.0",
