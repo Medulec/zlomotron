@@ -38,8 +38,10 @@ CREATE TABLE IF NOT EXISTS cooler_parts (id INTEGER PRIMARY KEY, name TEXT NOT N
 
 CREATE TABLE IF NOT EXISTS drafting_projects (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, created_at DATETIME DEFAULT CURRENT_TIMESTAMP, updated_at DATETIME DEFAULT CURRENT_TIMESTAMP, layout_data TEXT NOT NULL);
 
-CREATE TABLE IF NOT EXISTS project_slots (id INTEGER PRIMARY KEY AUTOINCREMENT, project_id INTEGER NOT NULL, slot_type TEXT NOT NULL CHECK (slot_type IN ('mobo', 'cpu', 'gpu', 'ram', 'psu', 'case', 'cooler')), part_id INTEGER NOT NULL, FOREIGN KEY (project_id) REFERENCES drafting_projects(id), FOREIGN KEY (part_id) REFERENCES parts(id));
+CREATE TABLE IF NOT EXISTS project_slots (id INTEGER PRIMARY KEY AUTOINCREMENT, project_id INTEGER NOT NULL, slot_type TEXT NOT NULL CHECK (slot_type IN ('mobo', 'cpu', 'gpu', 'ram', 'psu', 'case', 'cooler')), part_id INTEGER, FOREIGN KEY (project_id) REFERENCES drafting_projects(id), FOREIGN KEY (part_id) REFERENCES parts(id));
 `);
+
+db.exec('')
 }
 
 module.exports = { db, initDatabase };

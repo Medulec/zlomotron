@@ -20,7 +20,7 @@ router.get('/edit/:id', auth, (req, res) => {
 const id = req.params.id;
 const page = Page.getByID(id);
 if (!page) {
-return res.status(404).send("Strona chyba nie istnieje");
+return res.status(404).send("Strona nie istnieje...");
 }
 
 res.render('admin/edit', {
@@ -46,7 +46,7 @@ router.post('/edit/:id', auth, (req, res) => {
         res.redirect('/admin/pages');
     } catch (error) {
         console.error('Blad zapisu:', error);
-        res.status(500).send("Jakis blad");
+        res.status(500).send("Wystąpił błąd");
     }
 });
 
@@ -78,14 +78,14 @@ Page.create(data);
 res.redirect('/admin/pages');
 } catch (error) {
 console.error("Blad dodania", error);
-res.status(500).send("Cos poszlo nie tak");
+res.status(500).send("Coś poszło nie tak...");
 }
 });
 
 router.get('/logout', (req, res) => {
  req.session.destroy((err) => {
  if (err) {
- console.error("Cos jest nie tak z wylogowaniem...: ", err);
+ console.error("Coś jest nie tak z wylogowaniem...: ", err);
  }
  res.render('admin/logout', {
  title: "Wylogowano"
