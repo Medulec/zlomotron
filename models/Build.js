@@ -22,16 +22,18 @@ const Build = {
     },
 
     saveBuild: function(projectId, slots) {
-        const transaction = db.transaction(() => {
-            db.prepare(`DELETE FROM project_slots (project_id, slot_type, part_id) VALUE (?, ?, ?)`);
+    const transaction = db.transaction(() => {
+        db.prepare(`DELETE FROM project_slots WHERE project_id = ?`).run(projectId);
 
-            slots.array.forEach(slot => {
-                insert.run(projectId, slot.slot_type, slot.part_id || null);
-            });
-            return projectId;
-        })
-        return transaction();
-    },
+        const insert = db.prepare(`INSERT INTO project_slots (project_id, slot_type, part_id) VALUES (?, ?, ?)`);
+        slots.forEach(slot => {
+            insert.run(projectId, slot.slot_type, slot.part_id || null);
+        });
+
+        return projectId;
+    });
+    return transaction();
+},
 
     deleteBuild: function(id) {
         const transation = db.transaction(() => {
