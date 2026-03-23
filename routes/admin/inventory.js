@@ -5,7 +5,7 @@ const Parts = require('../../models/Parts');
 
 // GET - wyświetl stronę inventory
 router.get('/', auth, (req, res) => { 
-    res.render('admin/inventory', {
+    res.render('admin/inventory-module/inventory', {
         title: "INWENTARYZACJA",
         layout: 'admin/admin-lay'
     });

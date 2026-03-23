@@ -9,9 +9,9 @@ router.get('/', auth, (req, res) => {
   const lastBuilds = builds[0];
   const parts = Parts.getAll();
 
-  res.render('admin/drafting-table', {
+  res.render('admin/drafting-module/drafting-table', {
     title: "DESKA KRESLARSKA",
-    layout: 'admin/drafting-lay',
+    layout: 'admin/drafting-module/drafting-lay',
     builds: builds,
     lastBuilds: lastBuilds,
     allParts: parts

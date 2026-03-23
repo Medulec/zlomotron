@@ -7,7 +7,7 @@ const bcrypt = require('bcrypt');
 router.get('/', (req, res) => {
 
     if (req.session && req.session.isLoggedIn) {
-    return res.render('admin/admin-hub', {
+    return res.render('admin/hub/admin-hub', {
         title: "CENTRUM ADMINOWSKIE 1.0",
         layout: 'admin/admin-lay'
     })
@@ -20,7 +20,7 @@ router.get('/login', (req, res) => {
     if (req.session && req.session.isLoggedIn) {
         return res.redirect('/admin/admin-hub');
     }
-    res.render('admin/login', {
+    res.render('admin/auth/login', {
         title : 'Panel Adminowski'
     });
 });

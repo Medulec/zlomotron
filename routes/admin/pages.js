@@ -8,7 +8,7 @@ router.post('/delete/:id', auth, (req, res) => {
     try {
     const pageID = req.params.id;
     Page.delete(pageID);
-    res.redirect('/admin/pages');
+    res.redirect('/admin/pages-module/pages');
     } catch (error) {
         console.error('Błąd usuwania strony, błąd: ', error);
         res.status(500).send('Coś sie popsuło podczas usuwania strony...');
